@@ -6,8 +6,8 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/main.scss');
-    // eleventyConfig.addPassthroughCopy('./src/main.scss');
-    // eleventyConfig.addPassthroughCopy('./src/main.scss');
+    eleventyConfig.addPassthroughCopy('./src/job.js');
+    
 
 
     eleventyConfig.addTemplateFormats("scss");
@@ -36,4 +36,4 @@ module.exports = function(eleventyConfig) {
         output: "_site"
       }
     }
-  };
+}; 
