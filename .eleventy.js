@@ -10,6 +10,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/index.js');
     eleventyConfig.addPassthroughCopy('./src/job.js');
     eleventyConfig.addPassthroughCopy('./src/assets');
+    
 
 
     eleventyConfig.addTemplateFormats("scss");

@@ -218,7 +218,7 @@ const addCards = function(jobsArray){
 
     else{
 
-        jobsArray.reverse();
+        jobsArray.reverse(); 
 
         jobsNum = jobsArray.length;
         // console.log(jobsNum);
