@@ -70,9 +70,10 @@ import jobs from "./data.json";
 import logosSprite from "./assets/sprites/logos__sprite.svg";
 
 
-import A11yDialog from 'a11y-dialog'; /*<-- import */
+import A11yDialog from 'a11y-dialog'; 
 const container = document.querySelector('#my-dialog-container');
 const dialog = new A11yDialog(container);
+
 window.addEventListener('resize', function(){
 
     if(document.documentElement.clientWidth > 758){

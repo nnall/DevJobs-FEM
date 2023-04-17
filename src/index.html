@@ -15,7 +15,7 @@
     <!-- Font Awesome (checkbox) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="main.scss">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
@@ -40,7 +40,8 @@
 
             <input type="search" data-search class="search__input  search__input-mobile search" placeholder="Filter by title...">
 
-            <button class="filter__btn" data-a11y-dialog-show="my-dialog-container">
+            
+            <button class="filter__btn" data-a11y-dialog-show = "my-dialog-container">
                 <svg class = "filter__svg">
                     <use xlink href = "assets/sprites/mobile__sprite.svg#icon-filter"></use>
                 </svg>
@@ -104,10 +105,10 @@
         aria-labelledby="my-dialog-container" 
         aria-hidden="true">
 
-        <!-- 2. The dialog overlay -->
+        <!-- 2. The dialog overlay  -->
         <div class = "dialog-overlay" data-a11y-dialog-hide></div>
         
-        <!-- 3. The actual dialog : FILTER SVG POPUP (MOBILE)-->
+         <!-- 3. The actual dialog : FILTER SVG POPUP (MOBILE) -->
         <div class="filter__container" role="document">
             <div class="filter__container-top">
                 <svg class = "location__svg">
@@ -129,6 +130,6 @@
     <script src="job.js" type = "module"></script>
     
 
-
+ 
 </body>
 </html> 

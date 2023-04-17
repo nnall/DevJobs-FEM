@@ -4,10 +4,12 @@ const sass = require("sass");
 
 module.exports = function(eleventyConfig) {
 
-    eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/main.scss');
+    eleventyConfig.addPassthroughCopy('./src/main.css');
+    eleventyConfig.addPassthroughCopy('./src/main.css.map');
+    eleventyConfig.addPassthroughCopy('./src/index.js');
     eleventyConfig.addPassthroughCopy('./src/job.js');
-    
+    eleventyConfig.addPassthroughCopy('./src/assets');
 
 
     eleventyConfig.addTemplateFormats("scss");
@@ -26,8 +28,7 @@ module.exports = function(eleventyConfig) {
         }
     });
 
-    
-    
+
 
     // Return your Object options:
     return {

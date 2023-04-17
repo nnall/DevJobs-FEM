@@ -11,7 +11,7 @@ body {
   --input-text-color: #121721;
   --heading-color: #121721;
   --checkbox-bg-color:#9DAEC2;
-  --general-text-color: #6E8098;
+  --general-text-color: #9DAEC2;
   --external-link-bg-color: rgba(147, 155, 244, 0.4);
   --btn-bg-color: #5c66dc;
   --btn-bg-color-hover: #939BF4;
@@ -29,7 +29,7 @@ body.dark {
   --input-text-color: #FFFFFF;
   --heading-color: #FFFFFF;
   --checkbox-bg-color:#6E8098;
-  --general-text-color: #9DAEC2;
+  --general-text-color: #F4F6F8;
   --external-link-bg-color:rgba(92, 102, 220, 0.4);
   --btn-bg-color: #6770db;
   --btn-bg-color-hover: #939BF4;
@@ -57,8 +57,6 @@ body > * {
   font-weight: 700;
   border: none;
   transition: ease-in 0.1s;
-  font-size: 1.2rem;
-  font-weight: 500;
 }
 .btn:hover {
   cursor: pointer;
@@ -72,7 +70,6 @@ header {
   background-image: url(assets/mobile/bg-pattern-header.svg);
   background-size: cover;
   background-position: center;
-  z-index: 1;
   position: fixed;
   top: 0;
 }
@@ -93,16 +90,14 @@ h1 {
 .nightSwitch__container {
   display: flex;
   align-items: center;
-  position: relative;
-}
-
-.sun__svg, .moon__svg {
-  width: 20px;
-  height: 20px;
 }
 
 .sun__svg {
   margin-right: 0.5rem;
+}
+
+.moon__svg {
+  margin-left: 0.5rem;
 }
 
 .toggle__input {
@@ -122,7 +117,6 @@ h1 {
   cursor: pointer;
   transition: ease-in 0.3s;
   overflow: hidden;
-  margin-right: 0.5rem;
 }
 
 .check:before {
@@ -148,22 +142,18 @@ input[type=checkbox].toggle__input:checked + .check:before {
   transform: translateX(20px);
 }
 
+.searchbar__container, .card {
+  border-radius: 5px;
+}
+
 .searchbar__container {
   position: absolute;
   background-color: var(--component-bg-color);
   left: 50%;
   transform: translatex(-50%);
-  border-radius: 5px;
   padding: 0.75rem;
-  align-items: center;
-}
-
-.searchbar__mobile {
   display: flex;
-}
-
-.searchbar__desktop {
-  display: none;
+  align-items: center;
 }
 
 .search {
@@ -173,7 +163,7 @@ input[type=checkbox].toggle__input:checked + .check:before {
   border: none;
   font-size: 1rem;
   color: var(--input-text-color);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .search::-webkit-search-cancel-button {
@@ -189,8 +179,9 @@ input[type=checkbox].toggle__input:checked + .check:before {
   flex-grow: 1;
 }
 
-.search__input::placeholder, .filter__search::placeholder {
+.search__input::placeholder {
   color: rgba(110, 128, 152, 0.85);
+  font-weight: 300;
 }
 
 .filter__btn, .search__btn {
@@ -217,32 +208,17 @@ input[type=checkbox].toggle__input:checked + .check:before {
   background-color: var(--search-btn-bg-color-hover);
 }
 
-.search__svg, .filter__svg, .location__svg {
+.search__svg, .filter__svg {
   transform: scale(0.75);
 }
 
-.search__btn-desktop {
-  font-size: 1rem;
-  padding: 0.85rem;
-}
-
 .search__svg {
-  font-size: 0.8rem;
-  width: 24px;
-  height: 24px;
   fill: white;
+  font-size: 0.8rem;
 }
 
 .filter__svg {
   fill: var(--filter-svg-color);
-  height: 20px;
-  width: 20px;
-}
-
-.location__svg {
-  fill: var(--btn-bg-color);
-  width: 35px;
-  height: 35px;
 }
 
 .dialog-container[aria-hidden=true] {
@@ -250,12 +226,12 @@ input[type=checkbox].toggle__input:checked + .check:before {
 }
 
 .dialog-overlay {
-  background-color: rgba(43, 46, 56, 0.7); /* 1 */
+  background-color: rgba(43, 46, 56, 0.9); /* 1 */
   animation: fade-in 200ms both;
 }
 
 .dialog-container, .dialog-overlay {
-  z-index: 100; /* to be above the <header> (z-index:200)*/
+  z-index: 249; /* to be above the <header> (z-index:200)*/
   position: fixed;
   top: 0; /* 1 */
   right: 0; /* 1 */
@@ -264,17 +240,12 @@ input[type=checkbox].toggle__input:checked + .check:before {
 }
 
 .filter__container {
-  padding: 0.5rem;
-  z-index: 200;
   background-color: var(--component-bg-color);
+  border: 1px solid blue;
   border-radius: 5px;
   animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
   min-width: 337px;
   max-width: 339px;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 .filter__container > * {
   padding: 1rem;
@@ -303,10 +274,6 @@ input[type=checkbox].toggle__input:checked + .check:before {
 
 .filter__search, .filter__checkbox-label {
   margin-left: 0.5rem;
-}
-
-.filter__container-bottom {
-  padding-top: 1.5rem;
 }
 
 .filter__checkbox[type=checkbox] {
@@ -356,43 +323,70 @@ input[type=checkbox].toggle__input:checked + .check:before {
 .filter__container-searchBtn {
   display: block;
   margin: 1.5rem auto 0 auto;
-  padding: 1rem;
-  font-size: 1.2em;
   min-width: 100%;
-}
-
-.displayFilter {
-  display: block;
 }
 
 .results__container {
   margin-top: 13rem;
   padding: 0;
   padding-bottom: 3rem;
-  display: flex;
-  justify-content: center;
   align-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(327px, 339px));
   grid-row-gap: 3.5rem;
-  grid-column-gap: 2%;
+  grid-column-gap: 0.75rem;
+  justify-content: center;
 }
 
-@keyframes cardDrop {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
+.card {
+  height: 10rem;
+  border: 1px solid red;
+  background-color: var(--component-bg-color);
+}
+
+.grid-item:last-child {
+  display: inline-block;
+  grid-row-gap: 0;
+}
+
+.grid-row-wrapper {
+  grid-column: 1/-1;
+}
+
+.load__more {
+  background-color: var(--btn-bg-color);
+  display: block;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.filter__container-svg {
+  fill: var(--btn-bg-color);
+}
+
+@media (min-width: 500px) {
+  .container {
+    width: calc(100% - 4.5rem);
   }
 }
-.card {
-  background-color: var(--component-bg-color);
-  padding: 0 2rem 2.75rem 2rem;
-  text-decoration: none;
-  border-radius: 8px;
-  width: 350px;
+@media (min-width: 759px) {
+  header {
+    background-image: url(assets/tablet/bg-pattern-header.svg);
+  }
+}
+@media (min-width: 1109px) {
+  header {
+    background-image: url(assets/desktop/bg-pattern-header.svg);
+  }
+  .results__container {
+    justify-content: space-between;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
+width: 350px;
 }
 
 #btn-wrapper {
