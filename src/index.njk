@@ -1,12 +1,17 @@
-{% extends "_includes/base.html" %}   
-{$ block content %}
+---json
+{
+"title":"Home", 
+"layout":"base.njk"
+}
+---
    <main>
         <div class="container results__container">
+
             
-            {% for job in data.jobs | reverse %}
+            {%- for job in data.jobs | reverse -%}
 
                 <a class = "card" >
-                    <span class="logo__container" style="background-color:{job.logoBackground}>    
+                    <span class="logo__container" style="background-color:{{job.logoBackground}}">    
                         <svg class = "logo__svg">
                             <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
                         </svg>
@@ -18,9 +23,7 @@
                     <div class="card__subtitles company__name">{{job.company}}</div>
                     <div class="card__location">{{job.location}}</div>
                 </a>
-
-            {% endfor %}
-
+            {%- endfor -%}
 
             <div id="btn-wrapper">
                 <button class="load__more btn">
@@ -59,6 +62,5 @@
             </div>
         </div>
     </div>
-{% endblock %}
 
     

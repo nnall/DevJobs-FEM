@@ -19,8 +19,8 @@
 </head>
 <body>
     
-    {% include 'headerJob.html' %}
-    {% block content %}{% endblock %}
+    {% include 'headerJob.njk' %}
+    {{content | safe}} 
     
  
     
