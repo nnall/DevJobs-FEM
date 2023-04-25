@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>devjobs</title>
+    <title>{{title}}</title>
 
     <!-- <link rel="icon" href=""> -->
     <!-- Google Font -->
@@ -18,15 +18,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    
-
-
-    {% include 'headerJob.njk' %}
-    {{content | safe}}
- 
-    
-    <script src="index.js" type = "module"></script>
-    <script src="job.js" type = "module"></script>
-    
+    {% include 'header.html' %}
+    {% block content %}{% endblock %}    
 </body>
 </html> 

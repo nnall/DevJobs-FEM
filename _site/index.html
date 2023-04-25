@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    
+
+
     <header>
         <div class="container top__container">
             <h1>devjobs</h1>
@@ -85,6 +88,51 @@
         </div>
 
     </header>
+       
+   <main>
+        <div class="container results__container"><div id="btn-wrapper">
+                <button class="load__more btn">
+                    Load More
+                </button>
+            </div>
+        </div>
 
-   
+    </main> 
 
+    <!-- MODALS -->
+    <div
+        id="my-dialog-container"
+        class = "dialog-container"
+        aria-labelledby="your-dialog-title-id"
+        data-a11y-dialog="my-dialog-container" 
+        aria-labelledby="my-dialog-container" 
+        aria-hidden="true">
+
+        <!-- 2. The dialog overlay  -->
+        <div class = "dialog-overlay" data-a11y-dialog-hide></div>
+        
+         <!-- 3. The actual dialog : FILTER SVG POPUP (MOBILE) -->
+        <div class="filter__container" role="document">
+            <div class="filter__container-top">
+                <svg class = "location__svg">
+                    <use xlink href = "assets/sprites/location__sprite.svg#location"></use>
+                 </svg>
+                <input type="search" location-search placeholder = "Filter by location..." class="filter__search filter__search-dialog search">
+            </div>
+
+            <div class="filter__container-bottom">
+                <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox"  class="filter__checkbox filter__checkbox-dialog">
+                <label for="filter__checkbox" class="filter__checkbox-label">Full Time Only</label>
+                <button class="btn search__btn filter__container-searchBtn">Search</button>
+            </div>
+        </div>
+    </div>
+
+    
+ 
+    
+    
+    
+    
+</body>
+</html> 

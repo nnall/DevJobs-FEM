@@ -66,11 +66,11 @@ checkboxDiag.addEventListener('change', function(){
 //////////////   IMPORTS  ///////////////////////
 
 
-import jobs from "./data.json";
-import logosSprite from "./assets/sprites/logos__sprite.svg";
+// import jobs from "./data.json";
+// import logosSprite from "./assets/sprites/logos__sprite.svg";
 
 
-import A11yDialog from 'a11y-dialog'; 
+// import A11yDialog from 'a11y-dialog'; 
 const container = document.querySelector('#my-dialog-container');
 const dialog = new A11yDialog(container);
 
@@ -116,11 +116,6 @@ toggleInput.addEventListener('change', changeTheme);
 // console.log(toggleInput);
 // export{toggleInput}; 
 
-const writeSomeStuff = function(){
-    console.log('some stuff');
-}
-
-export {writeSomeStuff};
 
 // in order for one .js to receive an export from another .js, then both the sending .js and receiving .js files must be identified as type= "module", regardless of which html files they're linked to. 
 

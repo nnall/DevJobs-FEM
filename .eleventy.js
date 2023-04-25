@@ -10,7 +10,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/assets');
     
 
-
     eleventyConfig.addTemplateFormats("scss");
     // Creates the extension for use
     eleventyConfig.addExtension("scss", {
@@ -31,6 +30,10 @@ module.exports = function(eleventyConfig) {
 
     // Return your Object options:
     return {
+      markdownTemplateEngine: 'njk',
+      dataTemplateEngine: 'njk',
+      htmlTemplateEngine: 'njk',
+
       dir: {
         input: "src",
         output: "_site"
