@@ -1,13 +1,16 @@
 
 const sass = require("sass");
 
+const svgSprite = require("eleventy-plugin-svg-sprite");
+
 
 module.exports = function(eleventyConfig) {
 
 
     eleventyConfig.addPassthroughCopy('./src/data.json');
-    // eleventyConfig.addPassthroughCopy('./src/index.11ty.js');
-    eleventyConfig.addPassthroughCopy('./src/assets');
+    eleventyConfig.addPassthroughCopy("*.svg");
+    eleventyConfig.addPassthroughCopy("./assets");
+    eleventyConfig.addPassthroughCopy("./index.js");
     
 
     eleventyConfig.addTemplateFormats("scss");
@@ -26,11 +29,32 @@ module.exports = function(eleventyConfig) {
         }
     });
 
-
+    eleventyConfig.addPlugin(svgSprite, [
+      {
+        path: "./src/assets/desktop", // relative path to SVG directory
+        svgSpriteShortcode: "desktopSprite",
+      },
+      {
+        path: "./src/assets/locationSVG", // relative path to SVG directory
+        svgSpriteShortcode: "locationSprite",
+      },
+      {
+        path: "./src/assets/logos", // relative path to SVG directory
+        svgSpriteShortcode: "logosSprite",
+      },
+      {
+        path: "./src/assets/mobile", // relative path to SVG directory
+        svgSpriteShortcode: "mobileSprite",
+      },
+      {
+        path: "./src/assets/tablet", // relative path to SVG directory
+        svgSpriteShortcode: "tabletSprite",
+      },
+    ]);
 
     // Return your Object options:
     return {
-      
+
       dir: {
         input: "src",
         output: "_site"

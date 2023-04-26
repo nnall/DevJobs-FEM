@@ -66,11 +66,12 @@ checkboxDiag.addEventListener('change', function(){
 //////////////   IMPORTS  ///////////////////////
 
 
-// import jobs from "./data.json";
-// import logosSprite from "./assets/sprites/logos__sprite.svg";
+
+// import logosSprite from "/assets/sprites/logos__sprite.svg";
 
 
-// import A11yDialog from 'a11y-dialog'; 
+
+import A11yDialog from 'a11y-dialog'; 
 const container = document.querySelector('#my-dialog-container');
 const dialog = new A11yDialog(container);
 

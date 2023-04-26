@@ -8,12 +8,13 @@
         <div class="container results__container">
 
             
-            {%- for job in data.jobs | reverse -%}
+            {%- for job in data.jobs -%}
 
                 <a class = "card" >
-                    <span class="logo__container" style="background-color:{{job.logoBackground}}">    
+                    <span class="logo__container" style="background-color:{{job.logoBackground}}">   
+                       
                         <svg class = "logo__svg">
-                            <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
+                            <use xlink href="{%logosSprite {{job.company}}%}"></use>
                         </svg>
                     </span>
                     <div class="card__subtitles post__time">{{job.postedAt}}</div>
