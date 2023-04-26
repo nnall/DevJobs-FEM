@@ -13,9 +13,10 @@
                 <a class = "card" >
                     <span class="logo__container" style="background-color:{{job.logoBackground}}">   
                        
-                        <svg class = "logo__svg">
-                            <use xlink href="{%logosSprite {{job.company}}%}"></use>
-                        </svg>
+                       {%logosSprite#svg-%}{{job.company.toLowerCase()}}
+                        {# <svg class = "logo__svg">
+                            <use xlink href="{%logosSprite%}"></use>
+                        </svg> #}
                     </span>
                     <div class="card__subtitles post__time">{{job.postedAt}}</div>
                     <span class = "card__subtitles card__icon">.</span>
