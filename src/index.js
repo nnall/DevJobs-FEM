@@ -6,7 +6,7 @@ const toggleInput = document.getElementById('checkbox');
 
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
-const dialogContainer = document.querySelector('.dialog-container');
+// const dialogContainer = document.querySelector('.dialog-container');
 const resultsContainer = document.querySelector('.results__container');
 
 const loadMoreBtnWrapper = document.querySelector('#btn-wrapper');
@@ -66,20 +66,20 @@ checkboxDiag.addEventListener('change', function(){
 //////////////   IMPORTS  ///////////////////////
 
 
-
+ 
 // import logosSprite from "/assets/sprites/logos__sprite.svg";
 
 
 
-import A11yDialog from 'a11y-dialog'; 
-const container = document.querySelector('#my-dialog-container');
-const dialog = new A11yDialog(container);
+// import A11yDialog from 'a11y-dialog'; 
+// const container = document.querySelector('#my-dialog-container');
+// const dialog = new A11yDialog(container);
 
 window.addEventListener('resize', function(){
 
     if(document.documentElement.clientWidth > 758){
         // Hide modal once 'filter' field appears on regular search bar. 
-        dialog.hide();
+        // dialog.hide();
     }  
 })
 
@@ -379,7 +379,7 @@ const displaySearch = function(){
 searchBtns.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
         displaySearch();  
-        dialog.hide()
+        // dialog.hide()
     })
  
 })
@@ -387,7 +387,7 @@ searchBtns.forEach((btn)=>{
 document.addEventListener('keyup', (e)=>{
      if(e.key === 'Enter'){
         displaySearch(); 
-        dialog.hide()
+        // dialog.hide()
      }
      
 })

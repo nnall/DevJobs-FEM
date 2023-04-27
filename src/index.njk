@@ -5,6 +5,7 @@
 }
 ---
    <main>
+    {% logosSprite %}
         <div class="container results__container">
 
             
@@ -12,11 +13,9 @@
 
                 <a class = "card" >
                     <span class="logo__container" style="background-color:{{job.logoBackground}}">   
-                       
-                       {%logosSprite#svg-%}{{job.company.toLowerCase()}}
-                        {# <svg class = "logo__svg">
-                            <use xlink href="{%logosSprite%}"></use>
-                        </svg> #}
+                      <svg>
+                        <use xlink:href="#svg-{{job.company.toLowerCase()}}"></use>
+                      </svg>
                     </span>
                     <div class="card__subtitles post__time">{{job.postedAt}}</div>
                     <span class = "card__subtitles card__icon">.</span>
@@ -37,7 +36,7 @@
     </main> 
 
     <!-- MODALS -->
-    <div
+    {# <div
         id="my-dialog-container"
         class = "dialog-container"
         aria-labelledby="your-dialog-title-id"
@@ -63,6 +62,6 @@
                 <button class="btn search__btn filter__container-searchBtn">Search</button>
             </div>
         </div>
-    </div>
+    </div> #}
 
     

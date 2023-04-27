@@ -545,6 +545,7 @@ input[type="checkbox"].toggle__input:checked + .check:before{
     justify-content: center;
     height:3.25rem;
     width:3.25rem;
+    padding:.5rem;
     border-radius: 17px;
     transform:scale(1.2) translatex(.5rem) translatey(-1.5rem); 
     // border: .5px solid orange;
