@@ -65,20 +65,14 @@ checkboxDiag.addEventListener('change', function(){
 
 //////////////   IMPORTS  ///////////////////////
 
+// const jobs = require("./_data/data.json");
 
-import jobs from "./data.json";
-import logosSprite from "./assets/sprites/logos__sprite.svg";
-
-
-import A11yDialog from 'a11y-dialog'; 
-const container = document.querySelector('#my-dialog-container');
-const dialog = new A11yDialog(container);
 
 window.addEventListener('resize', function(){
 
     if(document.documentElement.clientWidth > 758){
         // Hide modal once 'filter' field appears on regular search bar. 
-        dialog.hide();
+        // dialog.hide();
     }  
 })
 
@@ -111,22 +105,6 @@ const changeTheme = function(){
 }
 
 toggleInput.addEventListener('change', changeTheme);
-
-// maybe copy the 'changeTheme()' funciton into job.js, and then somehow import the 'toggleInput' variable into it as well, meaning with the value it currently has. 
-// console.log(toggleInput);
-// export{toggleInput}; 
-
-const writeSomeStuff = function(){
-    console.log('some stuff');
-}
-
-export {writeSomeStuff};
-
-// in order for one .js to receive an export from another .js, then both the sending .js and receiving .js files must be identified as type= "module", regardless of which html files they're linked to. 
-
-// 
-
-
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////
@@ -223,40 +201,40 @@ const addCards = function(jobsArray){
         jobsNum = jobsArray.length;
         // console.log(jobsNum);
 
-        jobsArray.forEach((job)=>{
+        // jobsArray.forEach((job)=>{
 
-            jobIndex = jobsArray.indexOf(job) + 1;
+        //     jobIndex = jobsArray.indexOf(job) + 1;
 
-            // creating blank html and adding classes to it
-            const card = document.createElement('a'); 
-            card.classList.add('card');
-            card.setAttribute('jobid', `${job.id}`);
-            card.setAttribute('href', "./job.html");
+        //     // creating blank html and adding classes to it
+        //     const card = document.createElement('a'); 
+        //     card.classList.add('card');
+        //     card.setAttribute('jobid', `${job.id}`);
+        //     card.setAttribute('href', "./job.html");
         
-            card.innerHTML = 
-            `
-            <span class="logo__container" style="background-color:${job.logoBackground}">    
-                <svg class = "logo__svg">
-                    <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
-                </svg>
-            </span>
-            <div class="card__subtitles post__time">${job.postedAt}</div>
-            <span class = "card__subtitles card__icon">.</span>
-            <div class="card__subtitles job__time">${job.contract}</div>
-            <h2>${job.position}</h2>
-            <div class="card__subtitles company__name">${job.company}</div>
-            <div class="card__location">${job.location}</div>
-            `;   
+        //     card.innerHTML = 
+        //     `
+        //     <span class="logo__container" style="background-color:${job.logoBackground}">    
+        //         <svg class = "logo__svg">
+        //             <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
+        //         </svg>
+        //     </span>
+        //     <div class="card__subtitles post__time">${job.postedAt}</div>
+        //     <span class = "card__subtitles card__icon">.</span>
+        //     <div class="card__subtitles job__time">${job.contract}</div>
+        //     <h2>${job.position}</h2>
+        //     <div class="card__subtitles company__name">${job.company}</div>
+        //     <div class="card__location">${job.location}</div>
+        //     `;   
 
-            // Insert the Cards into .results__container
-            resultsContainer.insertAdjacentElement('afterbegin', card)
+        //     // Insert the Cards into .results__container
+        //     resultsContainer.insertAdjacentElement('afterbegin', card)
 
-            if(jobIndex == jobsNum){
-                // code to test total number and decide whether to hide everything past 12
-                // don't run displayCards() until all cards have been inserted into 'resultsContainer'
-                displayCards()
-            }
-        })
+        //     if(jobIndex == jobsNum){
+        //         // code to test total number and decide whether to hide everything past 12
+        //         // don't run displayCards() until all cards have been inserted into 'resultsContainer'
+        //         displayCards()
+        //     }
+        // })
     }
 
 }
@@ -383,7 +361,7 @@ const displaySearch = function(){
 searchBtns.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
         displaySearch();  
-        dialog.hide()
+        // dialog.hide()
     })
  
 })
@@ -391,7 +369,7 @@ searchBtns.forEach((btn)=>{
 document.addEventListener('keyup', (e)=>{
      if(e.key === 'Enter'){
         displaySearch(); 
-        dialog.hide()
+        // dialog.hide()
      }
      
 })

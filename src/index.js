@@ -6,7 +6,7 @@ const toggleInput = document.getElementById('checkbox');
 
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
-// const dialogContainer = document.querySelector('.dialog-container');
+const dialogContainer = document.querySelector('.dialog-container');
 const resultsContainer = document.querySelector('.results__container');
 
 const loadMoreBtnWrapper = document.querySelector('#btn-wrapper');
@@ -25,11 +25,11 @@ const searchMobile = document.querySelector('.search__input-mobile');
 const searchDesktop = document.querySelector('.search__input-desktop')
 
 // BOTH 'LOCATIONS' INPUTS
-// const locationDiag = document.querySelector('.filter__search-dialog');
+const locationDiag = document.querySelector('.filter__search-dialog');
 const locationDesktop = document.querySelector('.filter__search-desktop');
 
 // BOTH 'CHECKBOX' INPUTS
-// const checkboxDiag = document.querySelector('.filter__checkbox-dialog');
+const checkboxDiag = document.querySelector('.filter__checkbox-dialog');
 const checkboxDesk = document.querySelector('.filter__checkbox-desktop');
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,7 @@ checkboxDiag.addEventListener('change', function(){
 
 //////////////   IMPORTS  ///////////////////////
 
+// const jobs = require("./_data/data.json");
 
 
 window.addEventListener('resize', function(){
@@ -104,17 +105,6 @@ const changeTheme = function(){
 }
 
 toggleInput.addEventListener('change', changeTheme);
-
-// maybe copy the 'changeTheme()' funciton into job.js, and then somehow import the 'toggleInput' variable into it as well, meaning with the value it currently has. 
-// console.log(toggleInput);
-// export{toggleInput}; 
-
-
-// in order for one .js to receive an export from another .js, then both the sending .js and receiving .js files must be identified as type= "module", regardless of which html files they're linked to. 
-
-// 
-
-
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////
@@ -211,40 +201,40 @@ const addCards = function(jobsArray){
         jobsNum = jobsArray.length;
         // console.log(jobsNum);
 
-        jobsArray.forEach((job)=>{
+        // jobsArray.forEach((job)=>{
 
-            jobIndex = jobsArray.indexOf(job) + 1;
+        //     jobIndex = jobsArray.indexOf(job) + 1;
 
-            // creating blank html and adding classes to it
-            const card = document.createElement('a'); 
-            card.classList.add('card');
-            card.setAttribute('jobid', `${job.id}`);
-            card.setAttribute('href', "./job.html");
+        //     // creating blank html and adding classes to it
+        //     const card = document.createElement('a'); 
+        //     card.classList.add('card');
+        //     card.setAttribute('jobid', `${job.id}`);
+        //     card.setAttribute('href', "./job.html");
         
-            card.innerHTML = 
-            `
-            <span class="logo__container" style="background-color:${job.logoBackground}">    
-                <svg class = "logo__svg">
-                    <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
-                </svg>
-            </span>
-            <div class="card__subtitles post__time">${job.postedAt}</div>
-            <span class = "card__subtitles card__icon">.</span>
-            <div class="card__subtitles job__time">${job.contract}</div>
-            <h2>${job.position}</h2>
-            <div class="card__subtitles company__name">${job.company}</div>
-            <div class="card__location">${job.location}</div>
-            `;   
+        //     card.innerHTML = 
+        //     `
+        //     <span class="logo__container" style="background-color:${job.logoBackground}">    
+        //         <svg class = "logo__svg">
+        //             <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
+        //         </svg>
+        //     </span>
+        //     <div class="card__subtitles post__time">${job.postedAt}</div>
+        //     <span class = "card__subtitles card__icon">.</span>
+        //     <div class="card__subtitles job__time">${job.contract}</div>
+        //     <h2>${job.position}</h2>
+        //     <div class="card__subtitles company__name">${job.company}</div>
+        //     <div class="card__location">${job.location}</div>
+        //     `;   
 
-            // Insert the Cards into .results__container
-            resultsContainer.insertAdjacentElement('afterbegin', card)
+        //     // Insert the Cards into .results__container
+        //     resultsContainer.insertAdjacentElement('afterbegin', card)
 
-            if(jobIndex == jobsNum){
-                // code to test total number and decide whether to hide everything past 12
-                // don't run displayCards() until all cards have been inserted into 'resultsContainer'
-                displayCards()
-            }
-        })
+        //     if(jobIndex == jobsNum){
+        //         // code to test total number and decide whether to hide everything past 12
+        //         // don't run displayCards() until all cards have been inserted into 'resultsContainer'
+        //         displayCards()
+        //     }
+        // })
     }
 
 }

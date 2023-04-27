@@ -25,6 +25,7 @@ $inputFontSize: 1rem;
 /////////////////////////////////////////////////////////////////
 
 
+
 body{
     // Light Theme CSS Variables (default)
     --body-bg-color:#{$lightGrey};
@@ -108,6 +109,7 @@ header{
     width:100%;
     border-bottom-left-radius:5rem;
     background-image:url(assets/mobile/bg-pattern-header.svg);
+
     background-size:cover;
     background-position: center;
     z-index:1; //transformed logo card <span> gets put on equal stacking context w/<header> & would float over <header>. This keeps <header> on top.    
@@ -295,7 +297,7 @@ input[type="checkbox"].toggle__input:checked + .check:before{
     font-size:.8rem;
     width:24px;
     height:24px;
-    fill:white;
+    fill:white; 
     // border:.5px solid yellow;
 }
 

@@ -1,52 +1,57 @@
+{%mobileSprite%}
+{%tabletSprite%}
+{%desktopSprite%}
+
 <header>
         <div class="container top__container">
             <h1>devjobs</h1>
             <div class="nightSwitch__container"> 
                 <svg class = "sun__svg">
-                    <use xlink href = "assets/sprites/desktop__sprite.svg#icon-sun"></use>
+
+                    <use xlink:href="#svg-icon-sun"></use>
                 </svg>  
 
                 <input class="toggle__input" id = "checkbox" type="checkbox" role="switch" aria-checked="false">
                 <label for="checkbox" class="check"></label>
 
                 <svg class = "sun__svg">
-                    <use xlink href = "assets/sprites/desktop__sprite.svg#icon-moon"></use>
+                   <use xlink:href="#svg-icon-moon"></use>
                 </svg> 
             </div>
         </div>
 
-        <!-- MOBILE SEARCHBAR -->
+        <!-------------- MOBILE SEARCHBAR ( 0 - 758px) -------------->
         <div class="container searchbar__container searchbar__mobile" aria-expanded="false" role="modal">
 
             <input type="search" data-search class="search__input  search__input-mobile search" placeholder="Filter by title...">
 
             
-            <button class="filter__btn" data-a11y-dialog-show = "my-dialog-container">
+            <button class="filter__btn">
                 <svg class = "filter__svg">
-                    <use xlink href = "assets/sprites/mobile__sprite.svg#icon-filter"></use>
+                    <use xlink:href="#svg-icon-filter"></use>
                 </svg>
             </button>
             
             <button class="search__btn">
                 <svg class = "search__svg">
-                    <use xlink href = "assets/sprites/desktop__sprite.svg#icon-search"></use>
+                    <use xlink:href="#svg-icon-search"></use>
                 </svg>
             </button>
         </div>
 
-        <!-- TABLET/DESKTOP SEARCHBAR -->
+        <!------------- TABLET/DESKTOP SEARCHBAR (759px - 1107px, and on) ------------->
         <div class="container searchbar__container searchbar__desktop" aria-expanded="false" role="modal">
             
             <div class="search__left">
                 <svg class = "search__svg">
-                    <use xlink href = "assets/sprites/desktop__sprite.svg#icon-search"></use>
+                    <use xlink:href="#svg-icon-search"></use>
                  </svg>
                  <input type="search" data-search class="search__input search__input-desktop search" placeholder="Filter by title...">
             </div>
 
             <div class="search__middle">
                 <svg class = "location__svg">
-                    <use xlink href = "assets/sprites/location__sprite.svg#location"></use>
+                    <use xlink:href="#svg-icon-location"></use>
                  </svg>
                 <input type="search" location-search placeholder = "Filter by location..." class="filter__search filter__search-desktop search">
             </div>

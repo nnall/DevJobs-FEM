@@ -7,10 +7,10 @@ const svgSprite = require("eleventy-plugin-svg-sprite");
 module.exports = function(eleventyConfig) {
 
 
-    eleventyConfig.addPassthroughCopy('./src/data.json');
+    eleventyConfig.addPassthroughCopy('./src/_data/data.json');
     eleventyConfig.addPassthroughCopy("*.svg");
-    eleventyConfig.addPassthroughCopy("./assets");
-    eleventyConfig.addPassthroughCopy("./index.js");
+    eleventyConfig.addPassthroughCopy(".src/assets");
+    eleventyConfig.addPassthroughCopy("./src/index.js");
     
 
     eleventyConfig.addTemplateFormats("scss");
@@ -51,6 +51,8 @@ module.exports = function(eleventyConfig) {
         svgSpriteShortcode: "tabletSprite",
       },
     ]);
+
+    
 
     // Return your Object options:
     return {

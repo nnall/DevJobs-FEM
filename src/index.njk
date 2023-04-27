@@ -35,6 +35,29 @@
 
     </main> 
 
+    {# Modal #}
+
+    <div class = "dialog-container hide">
+        <div class = "dialog-overlay"></div> <!-- grey'ed out background-->   
+
+        <div class="filter__container" role="document">
+            <div class="filter__container-top">
+                <svg class = "location__svg">
+                    <use xlink href = "assets/sprites/location__sprite.svg#location"></use>
+                 </svg>
+                <input type="search" location-search placeholder = "Filter by location..." class="filter__search filter__search-dialog search">
+            </div>
+
+            <div class="filter__container-bottom">
+                <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox"  class="filter__checkbox filter__checkbox-dialog">
+                <label for="filter__checkbox" class="filter__checkbox-label">Full Time Only</label>
+                <button class="btn search__btn filter__container-searchBtn">Search</button>
+            </div>
+        </div>
+
+
+    </div>
+
     <!-- MODALS -->
     {# <div
         id="my-dialog-container"
