@@ -25,11 +25,11 @@ const searchMobile = document.querySelector('.search__input-mobile');
 const searchDesktop = document.querySelector('.search__input-desktop')
 
 // BOTH 'LOCATIONS' INPUTS
-const locationDiag = document.querySelector('.filter__search-dialog');
+// const locationDiag = document.querySelector('.filter__search-dialog');
 const locationDesktop = document.querySelector('.filter__search-desktop');
 
 // BOTH 'CHECKBOX' INPUTS
-const checkboxDiag = document.querySelector('.filter__checkbox-dialog');
+// const checkboxDiag = document.querySelector('.filter__checkbox-dialog');
 const checkboxDesk = document.querySelector('.filter__checkbox-desktop');
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -66,14 +66,6 @@ checkboxDiag.addEventListener('change', function(){
 //////////////   IMPORTS  ///////////////////////
 
 
- 
-// import logosSprite from "/assets/sprites/logos__sprite.svg";
-
-
-
-// import A11yDialog from 'a11y-dialog'; 
-// const container = document.querySelector('#my-dialog-container');
-// const dialog = new A11yDialog(container);
 
 window.addEventListener('resize', function(){
 
