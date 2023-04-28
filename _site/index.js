@@ -199,42 +199,42 @@ const addCards = function(jobsArray){
         jobsArray.reverse(); 
 
         jobsNum = jobsArray.length;
-        // console.log(jobsNum);
+        console.log(jobsNum);
 
-        // jobsArray.forEach((job)=>{
+        jobsArray.forEach((job)=>{
 
-        //     jobIndex = jobsArray.indexOf(job) + 1;
+            jobIndex = jobsArray.indexOf(job) + 1;
 
-        //     // creating blank html and adding classes to it
-        //     const card = document.createElement('a'); 
-        //     card.classList.add('card');
-        //     card.setAttribute('jobid', `${job.id}`);
-        //     card.setAttribute('href', "./job.html");
+            // creating blank html and adding classes to it
+            const card = document.createElement('a'); 
+            card.classList.add('card');
+            card.setAttribute('jobid', `${job.id}`);
+            card.setAttribute('href', "./job.html");
         
-        //     card.innerHTML = 
-        //     `
-        //     <span class="logo__container" style="background-color:${job.logoBackground}">    
-        //         <svg class = "logo__svg">
-        //             <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
-        //         </svg>
-        //     </span>
-        //     <div class="card__subtitles post__time">${job.postedAt}</div>
-        //     <span class = "card__subtitles card__icon">.</span>
-        //     <div class="card__subtitles job__time">${job.contract}</div>
-        //     <h2>${job.position}</h2>
-        //     <div class="card__subtitles company__name">${job.company}</div>
-        //     <div class="card__location">${job.location}</div>
-        //     `;   
+            card.innerHTML = 
+            `
+            <span class="logo__container" style="background-color:${job.logoBackground}">    
+                <svg class = "logo__svg">
+                    <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
+                </svg>
+            </span>
+            <div class="card__subtitles post__time">${job.postedAt}</div>
+            <span class = "card__subtitles card__icon">.</span>
+            <div class="card__subtitles job__time">${job.contract}</div>
+            <h2>${job.position}</h2>
+            <div class="card__subtitles company__name">${job.company}</div>
+            <div class="card__location">${job.location}</div>
+            `;   
 
-        //     // Insert the Cards into .results__container
-        //     resultsContainer.insertAdjacentElement('afterbegin', card)
+            // Insert the Cards into .results__container
+            resultsContainer.insertAdjacentElement('afterbegin', card)
 
-        //     if(jobIndex == jobsNum){
-        //         // code to test total number and decide whether to hide everything past 12
-        //         // don't run displayCards() until all cards have been inserted into 'resultsContainer'
-        //         displayCards()
-        //     }
-        // })
+            if(jobIndex == jobsNum){
+                // code to test total number and decide whether to hide everything past 12
+                // don't run displayCards() until all cards have been inserted into 'resultsContainer'
+                displayCards()
+            }
+        })
     }
 
 }

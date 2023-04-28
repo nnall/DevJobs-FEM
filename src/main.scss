@@ -108,7 +108,7 @@ header{
     height:7rem;
     width:100%;
     border-bottom-left-radius:5rem;
-    background-image:url(assets/mobile/bg-pattern-header.svg);
+    background-image:url(./assets/mobile/bg-pattern-header.svg);
 
     background-size:cover;
     background-position: center;
@@ -554,8 +554,9 @@ input[type="checkbox"].toggle__input:checked + .check:before{
 }
 
 .logo__svg{
-    height:20px;
-    width:40px;
+    height:25px;
+    width:max-content;
+
 }
 
 

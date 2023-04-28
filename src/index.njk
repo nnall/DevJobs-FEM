@@ -13,7 +13,7 @@
 
                 <a class = "card" >
                     <span class="logo__container" style="background-color:{{job.logoBackground}}">   
-                      <svg>
+                      <svg class = "logo__svg">
                         <use xlink:href="#svg-{{job.company.toLowerCase()}}"></use>
                       </svg>
                     </span>
@@ -43,7 +43,7 @@
         <div class="filter__container" role="document">
             <div class="filter__container-top">
                 <svg class = "location__svg">
-                    <use xlink href = "assets/sprites/location__sprite.svg#location"></use>
+                    <use xlink:href="#svg-icon-location"></use>
                  </svg>
                 <input type="search" location-search placeholder = "Filter by location..." class="filter__search filter__search-dialog search">
             </div>
