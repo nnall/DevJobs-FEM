@@ -65,9 +65,13 @@ checkboxDiag.addEventListener('change', function(){
 
 //////////////   IMPORTS  ///////////////////////
 
-// const jobs = require("./_data/data.json");
+// const jobs = require("./_data/data.json.jobs");
 
+const jobsData = require("_data/data.json");
 
+// console.log(jobsData);
+
+ 
 window.addEventListener('resize', function(){
 
     if(document.documentElement.clientWidth > 758){
