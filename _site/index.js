@@ -63,20 +63,13 @@ checkboxDiag.addEventListener('change', function(){
 })
 
 
-//////////////   IMPORTS  ///////////////////////
-
-// const jobs = require("./_data/data.json.jobs");
-
-const jobsData = require("_data/data.json");
-
-// console.log(jobsData);
-
+//////////////   IMPORTS  ///////////////////////     
  
 window.addEventListener('resize', function(){
 
     if(document.documentElement.clientWidth > 758){
         // Hide modal once 'filter' field appears on regular search bar. 
-        // dialog.hide();
+        dialogContainer.classList.add('hide');
     }  
 })
 
@@ -102,13 +95,17 @@ const changeTheme = function(){
     // Accessibility settings
     // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
     toggleInput.setAttribute("aria-checked", toggleInput.checked);
-    console.log(toggleInput.checked);
+    // console.log(toggleInput.checked);
  
     // Styles settings
     body.classList.toggle('dark');
 }
 
 toggleInput.addEventListener('change', changeTheme);
+
+filterBtn.addEventListener('click', function(){
+    dialogContainer.classList.remove('hide');
+})
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////
@@ -184,6 +181,8 @@ const removeChildren = function(parent) {
     }
 }
 
+
+
 // feeding this the 'displayArray' array created in displaySearch() 
 const addCards = function(jobsArray){
     
@@ -195,7 +194,6 @@ const addCards = function(jobsArray){
         // insert 'no match' container before now-hidden 'loadMore btn' container
         resultsContainer.insertAdjacentElement("afterbegin", noMatchContainer);
         loadMoreBtnWrapper.classList.add('hide');
- 
     }
 
     else{
@@ -203,7 +201,7 @@ const addCards = function(jobsArray){
         jobsArray.reverse(); 
 
         jobsNum = jobsArray.length;
-        console.log(jobsNum);
+        // console.log(jobsNum);
 
         jobsArray.forEach((job)=>{
 
@@ -213,13 +211,13 @@ const addCards = function(jobsArray){
             const card = document.createElement('a'); 
             card.classList.add('card');
             card.setAttribute('jobid', `${job.id}`);
-            card.setAttribute('href', "./job.html");
+            card.setAttribute('href', "job.html");
         
             card.innerHTML = 
             `
             <span class="logo__container" style="background-color:${job.logoBackground}">    
                 <svg class = "logo__svg">
-                    <use xlink href="${logosSprite}#${job.company.toLowerCase()}"></use>
+                    <use xlink href="assets/JS_sprites/logosSprite.svg#${job.company.toLowerCase()}"></use>
                 </svg>
             </span>
             <div class="card__subtitles post__time">${job.postedAt}</div>
@@ -236,145 +234,157 @@ const addCards = function(jobsArray){
             if(jobIndex == jobsNum){
                 // code to test total number and decide whether to hide everything past 12
                 // don't run displayCards() until all cards have been inserted into 'resultsContainer'
-                displayCards()
+                displayCards() 
             }
         })
     }
 
 }
+
+
+
+
 
 // INITIAL PAGE LOAD RUN addCards() WITH ALL JOBS in 'jobs' ARRAY
-addCards(jobs);
-
+let jobs;
 let fullTimeJobs = [];
+let displaySearch;
 
-// STORE ALL "FULL TIME" JOBS IN ARRAY (to be checked against in displaySearch() )
-jobs.forEach((job)=>{
-    if(job.contract == "Full Time"){
-        fullTimeJobs.push(job);
-    }
-})
-
-fullTimeJobs = fullTimeJobs.reverse();
-
-const displaySearch = function(){
-
-    let title = searchInput;
-    let location = locationInput;
-    let fulltime = checkboxInput;
-    let testTitle = false;
-    let testLocation = false;
-    let testFullTime = false;
-    let displayArray = [];
-
-
-    // if field is left blank... then provide results for non-blank field matches
-    // if field is NOT blank but has no matches... then do NOT provide matches for the other fields.. indicate there are no matches
-
-    // ONlY fields that have information should be tested for a match 
-    if(title.value.length > 0){
-        testTitle = true;
-    }
-    if(location.value.length >0) {
-        testLocation = true;
-        
-    }
-    if(fulltime.checked ==true){
-        testFullTime = true;
-    } 
-    
-    // NONE
-    if(!testTitle && !testLocation && !testFullTime){
-        displayArray = jobs.reverse();
-    }
-
-    // SINGLES - JUST ONE FIELD
-    else if(!testTitle && !testLocation && testFullTime){
-        displayArray = fullTimeJobs;
-    }
-
-    else if(!testTitle && testLocation && !testFullTime){
-        jobs.forEach((job)=>{
-            if (job.location.toLowerCase().includes(location.value.toLowerCase())){
-                displayArray.push(job);  
-            }
-        })
-        displayArray.reverse();
-    }
-
-    else if(testTitle && !testLocation && !testFullTime){
-        jobs.forEach((job)=>{
-            if (job.position.toLowerCase().includes(title.value.toLowerCase())){
-                displayArray.push(job);
-                
-            }
-        })
-        displayArray.reverse();
-    }
-
-    
-    // DOUBLES - 2 FIELDS
-    // one reusable function for location +FT/ title + FT
-    else if(!testTitle && testLocation && testFullTime){
-        jobs.forEach((job)=>{
-            if(job.location.toLowerCase().includes(location.value.toLowerCase()) && 
-            job.contract =='Full Time'){
-                displayArray.push(job);
-            }
-        })
-        displayArray.reverse();
-    }
-
-    else if(testTitle && !testLocation && testFullTime){
-        jobs.forEach((job)=>{
-            if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
-            job.contract =='Full Time'){
-                displayArray.push(job);  
-            }
-        })
-        displayArray.reverse();
-    }
-
-    else if(testTitle && testLocation && !testFullTime){
-        jobs.forEach((job)=>{
-            if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
-            job.location.toLowerCase().includes(location.value.toLowerCase())){
-                displayArray.push(job); 
-            }
-        })
-        displayArray.reverse();
-    }
-
-    // TRIPLE - ALL FIELDS
-    else if(testTitle && testLocation && testFullTime){
-        jobs.forEach((job)=>{
-            if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
-            job.location.toLowerCase().includes(location.value.toLowerCase()) &&
-            job.contract =='Full Time'){
-                displayArray.push(job);
-            }
-        })
-        displayArray.reverse();
-    }
-
-    addCards(displayArray);
-
-}
-
-
-searchBtns.forEach((btn)=>{
-    btn.addEventListener('click', ()=>{
-        displaySearch();  
-        // dialog.hide()
+fetch("_data/data.json")
+.then(res => res.json())  // convert result to a .json
+.then(data => jobs = data) // assign returned .json (data) to 'jobs'
+.then(()=>{
+    // STORE ALL "FULL TIME" JOBS IN ARRAY (to be checked against in displaySearch() )
+    console.log(jobs); 
+   
+    jobs.forEach((job)=>{
+        if(job.contract == "Full Time"){
+            fullTimeJobs.push(job);
+        }
     })
- 
+    // fullTimeJobs = fullTimeJobs.reverse();
 })
+.then(()=>{
+     addCards(jobs) // function to display all jobs initially upon page load 
+    })
+.then(()=>{
+    displaySearch = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
 
-document.addEventListener('keyup', (e)=>{
-     if(e.key === 'Enter'){
-        displaySearch(); 
-        // dialog.hide()
-     }
+        let title = searchInput;
+        let location = locationInput;
+        let fulltime = checkboxInput;
+        let testTitle = false;
+        let testLocation = false;
+        let testFullTime = false;
+        let displayArray = [];
+    
+    
+        // if field is left blank... then provide results for non-blank field matches
+        // if field is NOT blank but has no matches... then do NOT provide matches for the other fields.. indicate there are no matches
+    
+        // ONlY fields that have information should be tested for a match 
+        if(title.value.length > 0){
+            testTitle = true;
+        }
+        if(location.value.length >0) {
+            testLocation = true;
+            
+        }
+        if(fulltime.checked ==true){
+            testFullTime = true;
+        } 
+        
+        // NONE
+        if(!testTitle && !testLocation && !testFullTime){
+            displayArray = jobs.reverse();
+        }
+    
+        // SINGLES - JUST ONE FIELD
+        else if(!testTitle && !testLocation && testFullTime){
+            displayArray = fullTimeJobs;
+        }
+    
+        else if(!testTitle && testLocation && !testFullTime){
+            jobs.forEach((job)=>{
+                if (job.location.toLowerCase().includes(location.value.toLowerCase())){
+                    displayArray.push(job);  
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        else if(testTitle && !testLocation && !testFullTime){
+            jobs.forEach((job)=>{
+                if (job.position.toLowerCase().includes(title.value.toLowerCase())){
+                    displayArray.push(job); 
+                }
+            })
+            displayArray.reverse();
+        }
+        
+        // DOUBLES - 2 FIELDS
+        // one reusable function for location +FT/ title + FT
+        else if(!testTitle && testLocation && testFullTime){
+            jobs.forEach((job)=>{
+                if(job.location.toLowerCase().includes(location.value.toLowerCase()) && 
+                job.contract =='Full Time'){
+                    displayArray.push(job);
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        else if(testTitle && !testLocation && testFullTime){
+            jobs.forEach((job)=>{
+                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
+                job.contract =='Full Time'){
+                    displayArray.push(job);  
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        else if(testTitle && testLocation && !testFullTime){
+            jobs.forEach((job)=>{
+                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
+                job.location.toLowerCase().includes(location.value.toLowerCase())){
+                    displayArray.push(job); 
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        // TRIPLE - ALL FIELDS
+        else if(testTitle && testLocation && testFullTime){
+            jobs.forEach((job)=>{
+                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
+                job.location.toLowerCase().includes(location.value.toLowerCase()) &&
+                job.contract =='Full Time'){
+                    displayArray.push(job);
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        addCards(displayArray);
+    
+    }
+})
+.then(()=>{
+    searchBtns.forEach((btn)=>{
+        btn.addEventListener('click', ()=>{
+            displaySearch();  
+            dialogContainer.classList.add('hide');
+        })
      
+    })
 })
-
+.then(()=>{
+    document.addEventListener('keyup', (e)=>{
+        if(e.key === 'Enter'){
+           displaySearch(); 
+           dialogContainer.classList.add('hide');
+        }
+        
+   })
+}); 

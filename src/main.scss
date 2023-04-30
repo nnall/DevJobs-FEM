@@ -623,10 +623,12 @@ h2{
         padding: 0 .75rem;
     }
 
+    // hide mobile searchbar
     .searchbar__mobile{
         display:none;
     }
 
+    // show desktop searchbar
     .searchbar__desktop{
         display:flex;
         justify-content: stretch;

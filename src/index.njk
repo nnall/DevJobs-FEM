@@ -7,24 +7,8 @@
    <main>
     {% logosSprite %}
         <div class="container results__container">
-
             
-            {%- for job in data.jobs -%}
-
-                <a class = "card" >
-                    <span class="logo__container" style="background-color:{{job.logoBackground}}">   
-                      <svg class = "logo__svg">
-                        <use xlink:href="#svg-{{job.company.toLowerCase()}}"></use>
-                      </svg>
-                    </span>
-                    <div class="card__subtitles post__time">{{job.postedAt}}</div>
-                    <span class = "card__subtitles card__icon">.</span>
-                    <div class="card__subtitles job__time">{{job.contract}}</div>
-                    <h2>{{job.position}}</h2>
-                    <div class="card__subtitles company__name">{{job.company}}</div>
-                    <div class="card__location">{{job.location}}</div>
-                </a>
-            {%- endfor -%}
+            {# JS is filling in all of these cards #}
 
             <div id="btn-wrapper">
                 <button class="load__more btn">
@@ -35,7 +19,7 @@
 
     </main> 
 
-    {# Modal #}
+    {# Modal #} 
 
     <div class = "dialog-container hide">
         <div class = "dialog-overlay"></div> <!-- grey'ed out background-->   
