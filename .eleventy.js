@@ -10,8 +10,10 @@ module.exports = function(eleventyConfig) {
 
 
     eleventyConfig.addPassthroughCopy('./src/_data/data.json');
-    eleventyConfig.addPassthroughCopy("*.svg");
+   
+
     eleventyConfig.addPassthroughCopy("src/assets");
+    eleventyConfig.addPassthroughCopy("src/assets/");
     eleventyConfig.addPassthroughCopy("./src/index.js");
     
 
