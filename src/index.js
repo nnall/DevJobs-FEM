@@ -211,7 +211,7 @@ const addCards = function(jobsArray){
             const card = document.createElement('a'); 
             card.classList.add('card');
             card.setAttribute('jobid', `${job.id}`);
-            card.setAttribute('href', `/data/${job.id}/`); // <-- 11ty permalink 
+            card.setAttribute('href', `data/${job.id}/`); // <-- 11ty permalink 
         
             card.innerHTML = 
             `

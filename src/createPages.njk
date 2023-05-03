@@ -1,0 +1,83 @@
+---
+pagination:
+    data: data
+    size: 1
+    alias: jobPost
+permalink: "data/{{jobPost.id}}/"
+layout: baseJob.njk
+---
+{% logosSprite %}
+<main>
+    <div class="jobPost__container">
+        <div class="upperBox">
+
+            <div class="upperBox__left">
+                <div class="logo__box" style = "background-color:{{jobPost.logoBackground}}">
+                    <svg class = "jobPost__logoSvg">
+                        <use xlink:href="#svg-{{jobPost.company.toLowerCase()}}"></use>
+                    </svg>
+                </div>
+            
+                <div class="jobPost__titleBox">
+                    <h4 class = "jobPost__h4 jobPost__title">{{jobPost.company}}</h4>
+                    <span>{{jobPost.company.toLowerCase().replaceAll(' ', '')}}.com</span>
+                </div>
+            </div>
+            <div class="upperBox__right">
+                <button class = "btn jobPost__siteBtn">
+                    Company Site
+                </button>
+            </div>
+        </div>
+
+        <div class="lowerBox">
+
+            <div class="lowerBox__section lowerBox__heading">
+                <div class="lowerBox__heading__left">
+                    <div class="card__subtitles">{{jobPost.postedAt}}</div>
+                     <span class = "card__subtitles jobPost__dot">  .  </span>
+                    <div class="card__subtitles">{{jobPost.contract}}</div>
+
+                    <h5 class="jobPost__position">{{jobPost.position}}</h5>
+                    <span class="jobPost__country">{{jobPost.location}}</span>
+                </div>
+                <button class="search__btn lowerBox__applyNow">Apply Now</button>
+            </div>
+
+
+            <div class="lowerBox__section lowerBox__description lowerBox__para">
+                {{jobPost.description}}
+            </div>
+
+            <div class="lowerBox__section lowerBox__requirements">
+                <h4 class="jobPost__h4 jobPost__h4__requirements">
+                    Requirements
+                </h4>
+
+                <p class ="lowerBox__requirements__para lowerBox__para">
+                    {{jobPost.requirements.content}}
+                </p>
+
+                <ul class="lowerBox__requirements__ul">
+                    {# {%- for item in {{jobPost.requirements.items}}-%}
+                        <li class="lowerBox__requirements__li">{{item}}</li>
+                    {%- endfor -%} #}
+                </ul>
+
+            </div>
+
+
+
+
+            
+
+        </div>
+
+        
+    </div>
+    
+</main>
+
+
+{# template of individual job page goes here ? #}
+

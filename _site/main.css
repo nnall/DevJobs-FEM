@@ -8,6 +8,8 @@ body {
   --body-bg-color:#F4F6F8;
   --component-bg-color:#FFFFFF;
   --filter-svg-color: rgb(110, 128, 151);
+  --companySite-btn: rgba(147, 155, 244, 0.4);
+  --companySite-btn-font: #5c66dc;
   --input-text-color: #121721;
   --heading-color: #121721;
   --checkbox-bg-color:#9DAEC2;
@@ -30,6 +32,8 @@ body.dark {
   --heading-color: #FFFFFF;
   --checkbox-bg-color:#6E8098;
   --general-text-color: #9DAEC2;
+  --companySite-btn: #6E8098;
+  --companySite-btn-font: $lightGrey;
   --external-link-bg-color:rgba(92, 102, 220, 0.4);
   --btn-bg-color: #6770db;
   --btn-bg-color-hover: #939BF4;
@@ -471,9 +475,162 @@ h2 {
   margin-top: 2rem;
 }
 
+.jobPost__container {
+  width: calc(100% - 4rem);
+  max-width: 730px;
+  margin: 0 auto;
+  margin-top: 6rem;
+}
+
+.upperBox, .lowerBox {
+  background-color: var(--component-bg-color);
+  border-radius: 8px;
+}
+
+.upperBox {
+  z-index: 2;
+  position: sticky;
+  top: 6rem;
+}
+
+.upperBox, .upperBox__left, .upperBox__right {
+  display: flex;
+}
+
+.upperBox, .upperBox__left {
+  flex-direction: column;
+  align-items: center;
+}
+
+.upperBox__left {
+  height: min-content;
+}
+
+.upperBox__right {
+  padding: 1rem;
+  padding-bottom: 2rem;
+  align-items: center;
+}
+
+.logo__box {
+  height: 70px;
+  width: 70px;
+  border-radius: 20px;
+  margin-top: -25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jobPost__logoSvg {
+  transform: scale(0.75);
+}
+
+.jobPost__titleBox {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jobPost__h4 {
+  font-size: 1.5em;
+  margin-bottom: 0.5rem;
+}
+
+.jobPost__titleBox span {
+  font-size: 1.15em;
+  color: var(--general-text-color);
+}
+
+.jobPost__siteBtn {
+  padding: 0.8rem 1rem;
+  font-size: 1.2em;
+  background-color: var(--companySite-btn);
+  color: var(--companySite-btn-font);
+}
+
+.lowerBox__section {
+  margin-bottom: 3.3rem;
+}
+
+.lowerBox {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+}
+
+.lowerBox__heading__left {
+  margin-bottom: 3.5rem;
+}
+
+.jobPost__dot {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 0.5rem;
+}
+
+.jobPost__position {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 0.6rem 0;
+}
+
+.jobPost__country {
+  font-size: 1.25em;
+  color: var(--btn-bg-color);
+  font-weight: 600;
+}
+
+.lowerBox__applyNow {
+  font-family: "Kumbh Sans", sans-serif;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.25em;
+  color: white;
+  min-width: 100%;
+}
+
+.lowerBox__para {
+  color: var(--general-text-color);
+  font-size: 1.3em;
+  font-weight: 200;
+  line-height: 1.7;
+}
+
+.jobPost__h4__requirements > * {
+  margin-bottom: 2.5rem;
+}
+
 @media (min-width: 500px) {
   .container {
     width: calc(100% - 4.5rem);
+  }
+}
+@media (min-width: 607px) {
+  .upperBox, .upperBox__left, .upperBox__right {
+    flex-direction: row;
+  }
+  .upperBox {
+    justify-content: space-between;
+  }
+  .upperBox__left {
+    align-items: unset;
+  }
+  .logo__box {
+    height: 140px;
+    width: 140px;
+    border-radius: 0px;
+    margin-top: 0;
+  }
+  .jobPost__logoSvg {
+    transform: scale(0.6);
+  }
+  .jobPost__titleBox {
+    display: block;
+    padding: 2.25rem;
+  }
+  .upperBox__right {
+    padding: 2rem;
   }
 }
 @media (min-width: 759px) {
