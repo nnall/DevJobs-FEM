@@ -58,14 +58,37 @@ layout: baseJob.njk
                     {{jobPost.requirements.content}}
                 </p>
 
-                <ul class="lowerBox__requirements__ul">
+                <ul class="lowerBox__list lowerBox__requirements__ul">
                     
+                    {% set unorderedList = jobPost.requirements.items %}
 
-                    {# WANT TO USE .addCollection() HERE, INSERT ITEMS AS <li>'s #}
-
+                    {% for item in unorderedList %}
+                        <li><span>{{item}}</span></li>
+                    {% endfor %}
 
                 </ul>
+                
+            </div>
 
+            <div class="lowerBox__section lowerBox__role">
+                <h4 class="jobPost__h4 jobPost__h4__role">
+                    What You Will Do
+                </h4>
+
+                <p class ="lowerBox__role__para lowerBox__para">
+                    {{jobPost.role.content}}
+                </p>
+
+                <ol class="lowerBox__list lowerBox__role__ol">
+                    
+                    {% set unorderedList = jobPost.role.items %}
+
+                    {% for item in unorderedList %}
+                        <li>{{item}}</li>
+                    {% endfor %}
+
+                </ol>
+                
             </div>
 
 

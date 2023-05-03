@@ -56,12 +56,6 @@ module.exports = function(eleventyConfig) {
       },
     ]);
 
-    eleventyConfig.addCollection("list", function(collectionAPI){
-      return collectionAPI.getAll();
-    })
-
-    
-
     // Return your Object options:
     return {
 

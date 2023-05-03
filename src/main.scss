@@ -611,7 +611,7 @@ h2{
     
     margin:0 auto;
     margin-top:6rem;
-    // border: .5px solid green;
+    border: .5px solid red;
 }
 
 .upperBox, .lowerBox{
@@ -676,6 +676,7 @@ h2{
 .jobPost__h4{
     font-size:1.5em;
     margin-bottom:.5rem;
+    color:var(--input-text-color);
 }
 
 .jobPost__titleBox span{
@@ -695,7 +696,13 @@ h2{
 // LOWER BOX
 
 .lowerBox__section{
-    margin-bottom: 3.3rem;
+    margin-bottom: 3.5rem;
+    border: .5px solid green;
+    
+
+    & > *:not(:last-child){
+        margin-bottom:2rem;
+    }
 }
 
 // 'lowerBox__heading'
@@ -705,9 +712,8 @@ h2{
     padding:2rem 1.5rem;
 }
 
-.lowerBox__heading__left{
-    margin-bottom:3.5rem;
-   
+.lowerBox__applyNow{
+    margin-top:1.5rem;
 }
 
 .jobPost__dot{
@@ -737,16 +743,46 @@ h2{
     min-width:100%;
 }
 
-.lowerBox__para{
+.lowerBox__para, .lowerBox__list{
     color:var(--general-text-color);
     font-size:1.3em;
     font-weight:200;
-    line-height:1.7;
+    line-height:1.6;
 }
 
-.jobPost__h4__requirements > *{
-    margin-bottom: 2.5rem;
+.lowerBox__list{
+    margin-left:1.5rem;
+
+
+    & > *{
+       margin-bottom:.8rem; 
+    }
+
+    & > li::marker{
+        color: $violet; 
+        
+    }
+
+    & > li span{
+        border:.5px solid blue;
+        position:relative;
+        // left: 15px;
+    }
 }
+
+// .lowerBox__role__ol li::marker{
+//     border: .5px solid red;
+//     // margin-right:1rem;
+// }
+
+
+
+
+
+
+
+
+
 
 
 // ....................... MEDIA QUERIES .....................//
