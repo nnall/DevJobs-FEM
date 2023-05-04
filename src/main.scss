@@ -15,7 +15,8 @@ $midnight: #121721;
 $white: #FFFFFF;
 $lightGrey: #F4F6F8;
 $grey:#9DAEC2;
-$darkGrey:#6E8098;
+// $darkGrey:#6E8098;
+$darkGrey:rgb(113, 127, 150);
 
 // FONT
 $main: 'Kumbh Sans', sans-serif;
@@ -69,7 +70,7 @@ body.dark{
 
     //jobPost colors
     --companySite-btn: #{$darkGrey};
-    --companySite-btn-font: $lightGrey;
+    --companySite-btn-font: white;
 
 
     // external link btns
@@ -611,7 +612,7 @@ h2{
     
     margin:0 auto;
     margin-top:6rem;
-    border: .5px solid red;
+    // border: .5px solid blue;
 }
 
 .upperBox, .lowerBox{
@@ -643,7 +644,7 @@ h2{
 }
 
 .upperBox__right{
-    padding:1rem;
+    // padding:1rem;
     padding-bottom:2rem;
     align-items:center;
 }
@@ -684,9 +685,14 @@ h2{
     color: var(--general-text-color);
 }
 
-.jobPost__siteBtn{
+
+.jobPost__btn{
     padding:.8rem 1rem;
     font-size:1.2em;
+    
+}
+
+.jobPost__siteBtn{
     background-color: var(--companySite-btn);
     color: var(--companySite-btn-font);
     // font-family: 
@@ -697,23 +703,25 @@ h2{
 
 .lowerBox__section{
     margin-bottom: 3.5rem;
-    border: .5px solid green;
-    
 
-    & > *:not(:last-child){
+    & > *:not(:last-child):not(.lowerBox__heading__left){
         margin-bottom:2rem;
     }
+}
+
+.lowerBox__role{
+    margin-bottom:0;
 }
 
 // 'lowerBox__heading'
 
 .lowerBox{
     margin-top:2rem;
-    padding:2rem 1.5rem;
+    padding:2rem 2rem;
 }
 
 .lowerBox__applyNow{
-    margin-top:1.5rem;
+    margin-top:3rem;
 }
 
 .jobPost__dot{
@@ -726,6 +734,7 @@ h2{
     font-size:1.5em;
     font-weight:600;
     margin:.6rem 0;
+    color:var(--input-text-color);
 }
 
 .jobPost__country{
@@ -736,9 +745,6 @@ h2{
 
 .lowerBox__applyNow{
     font-family:$main;
-    padding:1rem;
-    font-weight:600;
-    font-size:1.25em;
     color:white;
     min-width:100%;
 }
@@ -753,37 +759,29 @@ h2{
 .lowerBox__list{
     margin-left:1.5rem;
 
-
     & > *{
        margin-bottom:.8rem; 
     }
 
     & > li::marker{
-        color: $violet; 
-        
+        color: $violet;  
     }
 
-    & > li span{
-        border:.5px solid blue;
-        position:relative;
-        // left: 15px;
+    & > li {
+        padding-left:15px
     }
 }
 
-// .lowerBox__role__ol li::marker{
-//     border: .5px solid red;
-//     // margin-right:1rem;
-// }
+footer{
+    padding:2rem;
+    background-color:var(--component-bg-color);
+    border-radius:8px;
+    margin-top:4rem;
+}
 
-
-
-
-
-
-
-
-
-
+footer .lowerBox__applyNow{
+    margin:0;
+}
 
 // ....................... MEDIA QUERIES .....................//
 
@@ -828,8 +826,44 @@ h2{
         padding:2.25rem;
     }
 
-    .upperBox__right{
-        padding:2rem;
+    .upperBox__right, .lowerBox{
+        padding:2.5rem;
+    }
+
+    .lowerBox__heading{
+        // border:.5px solid green;
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+    }
+
+    .lowerBox__heading__left{
+        margin:0;
+    }
+
+    .lowerBox__applyNow{
+        margin:0;
+        min-width:0;
+        padding:.8rem 2rem;
+    }
+
+
+    // jobPost FOOTER
+    footer{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer__jobTitle{
+        font-size:1.2em;
+        color: var(--input-text-color);
+        margin-bottom:.5rem;
+
+    }
+
+    .footer__company{
+        color: var(--general-text-color);
     }
 }
 

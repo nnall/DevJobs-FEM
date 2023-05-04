@@ -242,9 +242,6 @@ const addCards = function(jobsArray){
 }
 
 
-
-
-
 // INITIAL PAGE LOAD RUN addCards() WITH ALL JOBS in 'jobs' ARRAY
 let jobs;
 let fullTimeJobs = [];
@@ -384,7 +381,6 @@ fetch("_data/data.json")
         if(e.key === 'Enter'){
            displaySearch(); 
            dialogContainer.classList.add('hide');
-        }
-        
+        } 
    })
-}); 
+})

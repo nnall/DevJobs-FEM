@@ -24,7 +24,7 @@ layout: baseJob.njk
                 </div>
             </div>
             <div class="upperBox__right">
-                <button class = "btn jobPost__siteBtn">
+                <button class = "btn jobPost__btn jobPost__siteBtn">
                     Company Site
                 </button>
             </div>
@@ -41,7 +41,7 @@ layout: baseJob.njk
                     <h5 class="jobPost__position">{{jobPost.position}}</h5>
                     <span class="jobPost__country">{{jobPost.location}}</span>
                 </div>
-                <button class="search__btn lowerBox__applyNow">Apply Now</button>
+                <button class="search__btn jobPost__btn lowerBox__applyNow">Apply Now</button>
             </div>
 
 
@@ -63,7 +63,7 @@ layout: baseJob.njk
                     {% set unorderedList = jobPost.requirements.items %}
 
                     {% for item in unorderedList %}
-                        <li><span>{{item}}</span></li>
+                        <li>{{item}}</li>
                     {% endfor %}
 
                 </ul>
@@ -79,30 +79,26 @@ layout: baseJob.njk
                     {{jobPost.role.content}}
                 </p>
 
-                <ol class="lowerBox__list lowerBox__role__ol">
-                    
+                <ol class="lowerBox__list lowerBox__role__ol">  
                     {% set unorderedList = jobPost.role.items %}
 
                     {% for item in unorderedList %}
                         <li>{{item}}</li>
                     {% endfor %}
-
                 </ol>
-                
             </div>
-
-
-
-
-            
-
         </div>
-
-        
     </div>
     
 </main>
+<footer>
+    <div class="footer__companyLabel hide">
+        <h6 class="footer__jobTitle">{{jobPost.position}}</h6>
+        <span class="footer__company">{{jobPost.company}} Inc.</span>
+    </div>
+
+    <button class="search__btn jobPost__btn lowerBox__applyNow">Apply Now</button>
+</footer>
 
 
-{# template of individual job page goes here ? #}
 
