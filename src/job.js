@@ -1,5 +1,5 @@
-const body = document.querySelector('body');
-const toggleInput = document.getElementById('checkbox');
+// const body = document.querySelector('body');
+// const toggleInput = document.getElementById('checkbox');
 
 
 // FOOTER
@@ -22,19 +22,19 @@ window.addEventListener('resize', function(){
 })
 
 
-// DARK THEME
-const changeTheme = function(){
+// // DARK THEME
+// const changeTheme = function(){
 
-    // Accessibility settings
-    // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
-    toggleInput.setAttribute("aria-checked", toggleInput.checked);
-    // console.log(toggleInput.checked);
+//     // Accessibility settings
+//     // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
+//     toggleInput.setAttribute("aria-checked", toggleInput.checked);
+//     // console.log(toggleInput.checked);
  
-    // Styles settings
-    body.classList.toggle('dark');
-}
+//     // Styles settings
+//     body.classList.toggle('dark');
+// }
 
-toggleInput.addEventListener('change', changeTheme);
+// toggleInput.addEventListener('change', changeTheme);
 
 
 // it might be that this function needs to go into it own .js which is linked only to header.njk & headerJob.njk.. or possible those need to be merged.. might need to make header.njk USE headerJob.njk (no search bar) as a layout..

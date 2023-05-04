@@ -90,22 +90,22 @@ searchBtns.forEach((btn)=>{
 
 //////////////   CHANGING DARK/LIGHT THEME   ///////////////////////
 
-const changeTheme = function(){
+// const changeTheme = function(){
 
-    // Accessibility settings
-    // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
-    toggleInput.setAttribute("aria-checked", toggleInput.checked);
-    // console.log(toggleInput.checked);
+//     // Accessibility settings
+//     // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
+//     toggleInput.setAttribute("aria-checked", toggleInput.checked);
+//     // console.log(toggleInput.checked);
  
-    // Styles settings
-    body.classList.toggle('dark');
-}
+//     // Styles settings
+//     body.classList.toggle('dark');
+// }
 
-toggleInput.addEventListener('change', changeTheme);
+// toggleInput.addEventListener('change', changeTheme);
 
-filterBtn.addEventListener('click', function(){
-    dialogContainer.classList.remove('hide');
-})
+// filterBtn.addEventListener('click', function(){
+//     dialogContainer.classList.remove('hide');
+// })
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////
