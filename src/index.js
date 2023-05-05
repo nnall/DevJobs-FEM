@@ -71,9 +71,18 @@ window.addEventListener('resize', function(){
 
 let searched = false;
 
+function displayLastState(e){
+    
+    history.back()
+
+    // somehow retrieve previous 'state' of the page and load it 
+}
+
+
 // make callback load up associated 'pushstate' (back or forwards)?
 // also, if previous pushstate is "home", set 'searched' back to false
-window.addEventListener('popstate', (e)=>{console.log(e)})
+
+window.addEventListener('popstate', displayLastState)
 
 //////////////   SEARCH BUTTON COLOR CHANGE WHEN CLICKED   ///////////////////////
 
@@ -126,14 +135,10 @@ const displayCards = function(){
         }
     }
     /////////////////
-    // Need to be able to test the array that was fed into addCards() if it was the result of a search.. and then here, test for that and only if it was, do we do a pushState
-
 
     if(searched === true){
-        history.pushState(null, null, "SearchResults" )
-    } else{
-        history.pushState(null, null, "Home" )
-    }
+        history.pushState({"word":"this"}, null, "SearchResults" )
+    } 
 
     
 // set searched to 'false' when use goes 'back'
@@ -239,7 +244,7 @@ const addCards = function(jobsArray){
             if(jobIndex == jobsNum){
                 // code to test total number and decide whether to hide everything past 12
                 // don't run displayCards() until all cards have been inserted into 'resultsContainer'
-                displayCards() 
+                displayCards(jobsArray) 
             }
         })
     }
