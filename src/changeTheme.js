@@ -2,20 +2,34 @@ const body = document.querySelector('body');
 const toggleInput = document.getElementById('checkbox');
 
 
+window.addEventListener('pageshow', function(){
+    if(localStorage.getItem('darkMode') == "true"){
+        toggleInput.checked = true;
+        body.classList.add('dark');
+    } else{
+        toggleInput.checked = false;
+        body.classList.remove('dark');
+    }
+})
+
 
 
 // DARK THEME
 const changeTheme = function(){
 
     // Accessibility settings
-    // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
     toggleInput.setAttribute("aria-checked", toggleInput.checked);
-    // console.log(toggleInput.checked);
- 
-    // Styles settings
-    body.classList.toggle('dark');
+    
+    if (toggleInput.checked){
+        // console.log('dark mode is active')
+        body.classList.add('dark');
+        localStorage.setItem('darkMode', "true")
+    } else{
+        body.classList.remove('dark');
+        localStorage.setItem('darkMode', "false")
+    }
 
-    console.log('you clicked the checkbox')
+
 }
 
 toggleInput.addEventListener('change', changeTheme);

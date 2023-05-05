@@ -1,9 +1,5 @@
 "use strict"
 
-
-const body = document.querySelector('body');
-const toggleInput = document.getElementById('checkbox');
-
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
 const dialogContainer = document.querySelector('.dialog-container');
@@ -73,49 +69,41 @@ window.addEventListener('resize', function(){
     }  
 })
 
+let searched = false;
+
+// make callback load up associated 'pushstate' (back or forwards)?
+// also, if previous pushstate is "home", set 'searched' back to false
+window.addEventListener('popstate', (e)=>{console.log(e)})
+
 //////////////   SEARCH BUTTON COLOR CHANGE WHEN CLICKED   ///////////////////////
 
 searchBtns.forEach((btn)=>{
     btn.addEventListener('mousedown', function(){
-        console.log('click was activated')
+        // console.log('click was activated')
         btn.style.backgroundColor = '#939BF4';
     })
 
     btn.addEventListener('mouseup', function(){
-        console.log('click was activated')
+        // console.log('click was activated')
         btn.style.backgroundColor = '#6770db';
     })
 })
 
 
-//////////////   CHANGING DARK/LIGHT THEME   ///////////////////////
-
-// const changeTheme = function(){
-
-//     // Accessibility settings
-//     // if the 'checked' attribute of the checkbox (toggleInput) is "true", then so is the 'aria-checked' attribute, and vice versa
-//     toggleInput.setAttribute("aria-checked", toggleInput.checked);
-//     // console.log(toggleInput.checked);
- 
-//     // Styles settings
-//     body.classList.toggle('dark');
-// }
-
-// toggleInput.addEventListener('change', changeTheme);
-
-// filterBtn.addEventListener('click', function(){
-//     dialogContainer.classList.remove('hide');
-// })
+filterBtn.addEventListener('click', function(){
+    dialogContainer.classList.remove('hide');
+})
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////
 
 let logoContainer;
 let cards;
+let searchJobs;
 
-
+// Tests for and hides any cards after 12th result and shows 'loadMore' btn
 const displayCards = function(){
-    
+
     // ALL CARDS SHOW
     if(jobsNum <= 12){
         // hide 'load more' button container/ i.e show all cards
@@ -137,6 +125,23 @@ const displayCards = function(){
             }
         }
     }
+    /////////////////
+    // Need to be able to test the array that was fed into addCards() if it was the result of a search.. and then here, test for that and only if it was, do we do a pushState
+
+
+    if(searched === true){
+        history.pushState(null, null, "SearchResults" )
+    } else{
+        history.pushState(null, null, "Home" )
+    }
+
+    
+// set searched to 'false' when use goes 'back'
+
+
+    // if user now hits 'back', run addCards(jobs)
+    // window.addEventListener('popstate', detectHistory);
+
 }
 
 // Clicking 'Load More' reveals hidden cards
@@ -183,7 +188,7 @@ const removeChildren = function(parent) {
 
 
 
-// feeding this the 'displayArray' array created in displaySearch() 
+// feeding this the 'displayArray' array created in searchJobs() 
 const addCards = function(jobsArray){
     
     removeChildren(resultsContainer);
@@ -247,11 +252,12 @@ let jobs;
 let fullTimeJobs = [];
 let displaySearch;
 
+
 fetch("_data/data.json")
 .then(res => res.json())  // convert result to a .json
 .then(data => jobs = data) // assign returned .json (data) to 'jobs'
 .then(()=>{
-    // STORE ALL "FULL TIME" JOBS IN ARRAY (to be checked against in displaySearch() )
+    // STORE ALL "FULL TIME" JOBS IN ARRAY (to be checked against in searchJobs() )
     console.log(jobs); 
    
     jobs.forEach((job)=>{
@@ -265,7 +271,9 @@ fetch("_data/data.json")
      addCards(jobs) // function to display all jobs initially upon page load 
     })
 .then(()=>{
-    displaySearch = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
+     searchJobs = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
+
+        searched = true;
 
         let title = searchInput;
         let location = locationInput;
@@ -291,7 +299,7 @@ fetch("_data/data.json")
             testFullTime = true;
         } 
         
-        // NONE
+        // NONE - display all jobs again
         if(!testTitle && !testLocation && !testFullTime){
             displayArray = jobs.reverse();
         }
@@ -370,7 +378,7 @@ fetch("_data/data.json")
 .then(()=>{
     searchBtns.forEach((btn)=>{
         btn.addEventListener('click', ()=>{
-            displaySearch();  
+            searchJobs();  
             dialogContainer.classList.add('hide');
         })
      
@@ -379,7 +387,7 @@ fetch("_data/data.json")
 .then(()=>{
     document.addEventListener('keyup', (e)=>{
         if(e.key === 'Enter'){
-           displaySearch(); 
+           searchJobs(); 
            dialogContainer.classList.add('hide');
         } 
    })
