@@ -71,18 +71,20 @@ window.addEventListener('resize', function(){
 
 let searched = false;
 
-function displayLastState(e){
-    
-    history.back()
+function displayLastState(){
+    console.log("back button hit");
+    console.log(history.state);
 
     // somehow retrieve previous 'state' of the page and load it 
 }
+
+window.addEventListener('popstate', displayLastState)
 
 
 // make callback load up associated 'pushstate' (back or forwards)?
 // also, if previous pushstate is "home", set 'searched' back to false
 
-window.addEventListener('popstate', displayLastState)
+
 
 //////////////   SEARCH BUTTON COLOR CHANGE WHEN CLICKED   ///////////////////////
 
@@ -137,9 +139,10 @@ const displayCards = function(){
     /////////////////
 
     if(searched === true){
-        history.pushState({"word":"this"}, null, "SearchResults" )
+        history.pushState({word:"this"}, null, "SearchResults" )
     } 
 
+   
     
 // set searched to 'false' when use goes 'back'
 
