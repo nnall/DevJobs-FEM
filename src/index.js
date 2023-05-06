@@ -69,23 +69,6 @@ window.addEventListener('resize', function(){
     }  
 })
 
-let searched = false;
-
-function displayLastState(){
-    console.log("back button hit");
-    console.log(history.state);
-
-    // somehow retrieve previous 'state' of the page and load it 
-}
-
-window.addEventListener('popstate', displayLastState)
-
-
-// make callback load up associated 'pushstate' (back or forwards)?
-// also, if previous pushstate is "home", set 'searched' back to false
-
-
-
 //////////////   SEARCH BUTTON COLOR CHANGE WHEN CLICKED   ///////////////////////
 
 searchBtns.forEach((btn)=>{
@@ -103,6 +86,7 @@ searchBtns.forEach((btn)=>{
 
 filterBtn.addEventListener('click', function(){
     dialogContainer.classList.remove('hide');
+    console.log('filterBtn was clicked')
 })
 /////////////////////////////////////////////////////////////////////
 
@@ -137,18 +121,6 @@ const displayCards = function(){
         }
     }
     /////////////////
-
-    if(searched === true){
-        history.pushState({word:"this"}, null, "SearchResults" )
-    } 
-
-   
-    
-// set searched to 'false' when use goes 'back'
-
-
-    // if user now hits 'back', run addCards(jobs)
-    // window.addEventListener('popstate', detectHistory);
 
 }
 
@@ -247,7 +219,7 @@ const addCards = function(jobsArray){
             if(jobIndex == jobsNum){
                 // code to test total number and decide whether to hide everything past 12
                 // don't run displayCards() until all cards have been inserted into 'resultsContainer'
-                displayCards(jobsArray) 
+                displayCards() 
             }
         })
     }
@@ -265,23 +237,12 @@ fetch("_data/data.json")
 .then(res => res.json())  // convert result to a .json
 .then(data => jobs = data) // assign returned .json (data) to 'jobs'
 .then(()=>{
-    // STORE ALL "FULL TIME" JOBS IN ARRAY (to be checked against in searchJobs() )
-    console.log(jobs); 
-   
-    jobs.forEach((job)=>{
-        if(job.contract == "Full Time"){
-            fullTimeJobs.push(job);
-        }
-    })
-    // fullTimeJobs = fullTimeJobs.reverse();
-})
-.then(()=>{
      addCards(jobs) // function to display all jobs initially upon page load 
     })
 .then(()=>{
      searchJobs = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
 
-        searched = true;
+        
 
         let title = searchInput;
         let location = locationInput;
