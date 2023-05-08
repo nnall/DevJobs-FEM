@@ -10,8 +10,16 @@
                     <use xlink:href="#svg-icon-sun"></use>
                 </svg>  
 
-                <input class="toggle__input" id = "checkbox" type="checkbox" role="switch" aria-checked="false">
-                <label for="checkbox" class="check"></label>
+                <input class="toggle__input" 
+                    id = "checkbox" 
+                    type="checkbox" 
+                    role="switch" 
+                    aria-checked="false">
+
+                <label 
+                    for="checkbox" 
+                    class="check">
+                </label>
 
                 <svg class = "sun__svg">
                    <use xlink:href="#svg-icon-moon"></use>
@@ -20,55 +28,99 @@
         </div>
 
         <!-------------- MOBILE SEARCHBAR ( 0 - 758px) -------------->
-        <form class="container searchbar__container searchbar__mobile" aria-expanded="false" role="modal">
-            
+        <form class="container searchbar__container searchbar__mobile" method= "GET">
             
             <!--TITLE INPUT-->
-            <input type="search" data-search class="search__input  search__input-mobile search" placeholder="Filter by title...">
+            <label class = "mobile_title_label">
+                <span class="sr-only">Filter by title</span>
+                <input 
+                    type="search"  
+                    name = "title" 
+                    class="search__input search__input-mobile search" 
+                    placeholder="Filter by title..."
+                >
+            </label>
 
             <!--LOCATION & FULLTIME POPOUT INPUT-->
-            <button class="filter__btn">
-                <svg class = "filter__svg">
-                    <use xlink:href="#svg-icon-filter"></use>
-                </svg>
+            <button  
+                class="filter__btn"  
+                aria-controls="dialog-container"
+                >
+                    <span class="sr-only">location and fulltime filter</span>
+                    <svg class = "filter__svg">
+                        <use xlink:href="#svg-icon-filter"></use>
+                    </svg>
             </button>
             
             <!--SEARCH/SUBMIT-->
-            <button class="search__btn">
-                <svg class = "search__svg">
-                    <use xlink:href="#svg-icon-search"></use>
-                </svg>
+            <button 
+                class="search__btn"
+                type = "submit" 
+                >
+                    <span class="sr-only">submit search</span>
+                    <svg class = "search__svg">
+                        <use xlink:href="#svg-icon-search"></use>
+                    </svg>
             </button>
+           
         </form>
 
         <!------------- TABLET/DESKTOP SEARCHBAR (759px - 1107px, and on) ------------->
-        <form class="container searchbar__container searchbar__desktop" aria-expanded="false" role="modal">
+        <form class="container searchbar__container searchbar__desktop" method= "GET">
             
             <!--TITLE INPUT-->
             <div class="search__left">
-                <svg class = "search__svg">
-                    <use xlink:href="#svg-icon-search"></use>
-                 </svg>
-                 <input type="search" data-search class="search__input search__input-desktop search" placeholder="Filter by title...">
+                <label>
+                    <span class="sr-only">Filter by title</span>
+                    <svg class = "search__svg">
+                        <use xlink:href="#svg-icon-search"></use>
+                     </svg>
+                     <input 
+                        type="search"
+                        name="title"
+                        class="search__input search__input-desktop search" 
+                        placeholder="Filter by title...">
+                </label>
             </div>
 
             <!--LOCATION INPUT-->
             <div class="search__middle">
-                <svg class = "location__svg">
-                    <use xlink:href="#svg-icon-location"></use>
-                 </svg>
-                <input type="search" location-search placeholder = "Filter by location..." class="filter__search filter__search-desktop search">
+                <label>
+                    <span class="sr-only">Filter by title</span>
+                    <svg class = "location__svg">
+                        <use xlink:href="#svg-icon-location"></use>
+                     </svg>
+                    <input 
+                        type="search"
+                        name="location" 
+                        placeholder = "Filter by location..." 
+                        class="filter__search filter__search-desktop search">
+                </label>
             </div>
 
             <!--FULLTIME INPUT & SEARCH/SUBMIT-->
             <div class="search__right">
                 <!--FULLTIME INPUT-->
                 <span class="FT__container">
-                    <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox" class="filter__checkbox filter__checkbox-desktop">
-                <label for="filter__checkbox" class="filter__checkbox-label">Full Time</label>
+                    <input 
+                        type="checkbox" 
+                        value = "fulltime"
+                        name = "fulltime" 
+                        aria-checked="false" 
+                        id="filter__checkbox" 
+                        class="filter__checkbox filter__checkbox-desktop"
+                        >
+
+                    <label 
+                        for="filter__checkbox" 
+                        class="filter__checkbox-label">
+                        Full Time
+                    </label>
                 </span>
                 <!--SEARCH/SUBMIT-->
-                <button class="btn search__btn search__btn-desktop">
+                <button 
+                    type="submit"
+                    class="btn search__btn search__btn-desktop">
                     Search
                 </button>
             </div>

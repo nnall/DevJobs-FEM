@@ -20,26 +20,57 @@
 
     {# Modal #} 
 
-    <div class = "dialog-container hide">
+    <form 
+        class = "dialog-container hide" 
+        aria-expanded="false"  
+        id="dialog-container"
+        method="GET">
+
         <div class = "dialog-overlay"></div> <!-- grey'ed out background-->   
 
-        <div class="filter__container" role="document">
+        <div class="filter__container">
             <div class="filter__container-top">
                 <svg class = "location__svg">
                     <use xlink:href="#svg-icon-location"></use>
                  </svg>
-                <input type="search" id = "location__input" location-search placeholder = "Filter by location..." class="filter__search filter__search-dialog search">
+
+                <label>
+                    <span class="sr-only">Filter By Location</span>
+                    <input
+                        type="search"
+                        name="location"
+                        placeholder = "Filter by location..."
+                        class="filter__search filter__search-dialog search">
+                </label>
+
             </div>
 
             <div class="filter__container-bottom">
-                <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox"  class="filter__checkbox filter__checkbox-dialog">
-                <label for="filter__checkbox" class="filter__checkbox-label">Full Time Only</label>
-                <button class="btn search__btn filter__container-searchBtn">Search</button>
+                <input type="checkbox"
+                    aria-checked="false"
+                    id="filter__checkbox"
+                    name ="fulltime"
+                    value = "fulltime"
+                    class="filter__checkbox filter__checkbox-dialog"
+                    >
+
+                <label 
+                    for="filter__checkbox" 
+                    class="filter__checkbox-label">
+                    Full Time Only
+                </label>
+
+                <button 
+                    class="btn search__btn filter__container-searchBtn"
+                    type="submit"
+                    >
+                    Search
+                </button>
             </div>
         </div>
 
 
-    </div>
+    </form>
 
     <!-- MODALS -->
     {# <div
