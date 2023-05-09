@@ -3,7 +3,11 @@
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
 const dialogContainer = document.querySelector('.dialog-container');
+const dialogOverlay = document.querySelector(".dialog-overlay");
+
 const resultsContainer = document.querySelector('.results__container');
+
+
 
 const loadMoreBtnWrapper = document.querySelector('#btn-wrapper');
 const loadMoreBtn = document.querySelector('.load__more');
@@ -88,6 +92,20 @@ filterBtn.addEventListener('click', function(){
     dialogContainer.classList.remove('hide');
     console.log('filterBtn was clicked')
 })
+
+
+//////// click out of Modal
+
+dialogOverlay.addEventListener('click',()=>{
+    dialogContainer.classList.add('hide');
+})
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////

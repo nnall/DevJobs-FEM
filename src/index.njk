@@ -22,7 +22,8 @@
 
     <form 
         class = "dialog-container hide" 
-        aria-expanded="false"  
+        role = "dialog"
+        aria-modal = "true"  
         id="dialog-container"
         method="GET">
 
@@ -35,12 +36,13 @@
                  </svg>
 
                 <label>
-                    <span class="sr-only">Filter By Location</span>
+                    {# <span class="sr-only">Filter By Location</span> #}
                     <input
                         type="search"
                         name="location"
                         placeholder = "Filter by location..."
-                        class="filter__search filter__search-dialog search">
+                        class="filter__search filter__search-dialog search"
+                        >
                 </label>
 
             </div>
@@ -68,8 +70,6 @@
                 </button>
             </div>
         </div>
-
-
     </form>
 
     <!-- MODALS -->

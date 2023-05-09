@@ -32,7 +32,7 @@
             
             <!--TITLE INPUT-->
             <label class = "mobile_title_label">
-                <span class="sr-only">Filter by title</span>
+                {# <span class="sr-only">Filter by title</span> #}
                 <input 
                     type="search"  
                     name = "title" 
@@ -42,11 +42,13 @@
             </label>
 
             <!--LOCATION & FULLTIME POPOUT INPUT-->
-            <button  
+            <button
+                type="button"  
                 class="filter__btn"  
                 aria-controls="dialog-container"
+                aria-expanded= "false"
                 >
-                    <span class="sr-only">location and fulltime filter</span>
+                    {# <span class="sr-only">location and fulltime filters</span> #}
                     <svg class = "filter__svg">
                         <use xlink:href="#svg-icon-filter"></use>
                     </svg>
@@ -57,7 +59,7 @@
                 class="search__btn"
                 type = "submit" 
                 >
-                    <span class="sr-only">submit search</span>
+                    {# <span class="sr-only">submit search</span> #}
                     <svg class = "search__svg">
                         <use xlink:href="#svg-icon-search"></use>
                     </svg>
@@ -71,7 +73,7 @@
             <!--TITLE INPUT-->
             <div class="search__left">
                 <label>
-                    <span class="sr-only">Filter by title</span>
+                    {# <span class="sr-only">Filter by title</span> #}
                     <svg class = "search__svg">
                         <use xlink:href="#svg-icon-search"></use>
                      </svg>
@@ -86,7 +88,7 @@
             <!--LOCATION INPUT-->
             <div class="search__middle">
                 <label>
-                    <span class="sr-only">Filter by title</span>
+                    {# <span class="sr-only">Filter by title</span> #}
                     <svg class = "location__svg">
                         <use xlink:href="#svg-icon-location"></use>
                      </svg>
