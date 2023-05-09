@@ -254,12 +254,13 @@ let displaySearch;
 fetch("_data/data.json")
 .then(res => res.json())  // convert result to a .json
 .then(data => jobs = data) // assign returned .json (data) to 'jobs'
-.then(()=>{console.log(jobs)})
 .then(()=>{
      addCards(jobs) // function to display all jobs initially upon page load 
     })
 .then(()=>{
      searchJobs = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
+
+        
 
         let title = searchInput;
         let location = locationInput;

@@ -226,42 +226,10 @@ input[type="checkbox"].toggle__input:checked + .check:before{
     align-items:center;
 }
 
-// Mobile Searchbar Container
 .searchbar__mobile{
     display:flex;
-    // border:.5px solid yellow;
-    
 }
 
-.searchbar__container label{
-    display:flex;
-    align-items:center;
-}
-
-.mobile_title_label{
-    width:130px;
-    flex-grow:1;
-}
-
-
-// ARIA screen-reader
-.sr-only{
-    position: absolute;
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0,0,0,0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-}
-
-
-
-
-// Tablet Desktop Searchbar Container
 .searchbar__desktop{
     display:none;
 }
@@ -950,11 +918,6 @@ footer .lowerBox__applyNow{
 
     .search__right{
         justify-content: space-between;
-    }
-
-    .FT__container{
-        // border: .5px solid blue;
-        display:flex;
     }
 
 

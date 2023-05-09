@@ -10,16 +10,8 @@
                     <use xlink:href="#svg-icon-sun"></use>
                 </svg>  
 
-                <input class="toggle__input" 
-                    id = "checkbox" 
-                    type="checkbox" 
-                    role="switch" 
-                    aria-checked="false">
-
-                <label 
-                    for="checkbox" 
-                    class="check">
-                </label>
+                <input class="toggle__input" id = "checkbox" type="checkbox" role="switch" aria-checked="false">
+                <label for="checkbox" class="check"></label>
 
                 <svg class = "sun__svg">
                    <use xlink:href="#svg-icon-moon"></use>
@@ -28,7 +20,8 @@
         </div>
 
         <!-------------- MOBILE SEARCHBAR ( 0 - 758px) -------------->
-        <form class="container searchbar__container searchbar__mobile" method= "GET">
+        <form class="container searchbar__container searchbar__mobile" aria-expanded="false" role="modal">
+            
             
             <!--TITLE INPUT-->
             <label class = "mobile_title_label">
@@ -64,11 +57,10 @@
                         <use xlink:href="#svg-icon-search"></use>
                     </svg>
             </button>
-           
         </form>
 
         <!------------- TABLET/DESKTOP SEARCHBAR (759px - 1107px, and on) ------------->
-        <form class="container searchbar__container searchbar__desktop" method= "GET">
+        <form class="container searchbar__container searchbar__desktop" aria-expanded="false" role="modal">
             
             <!--TITLE INPUT-->
             <div class="search__left">
@@ -104,25 +96,11 @@
             <div class="search__right">
                 <!--FULLTIME INPUT-->
                 <span class="FT__container">
-                    <input 
-                        type="checkbox" 
-                        value = "fulltime"
-                        name = "fulltime" 
-                        aria-checked="false" 
-                        id="filter__checkbox" 
-                        class="filter__checkbox filter__checkbox-desktop"
-                        >
-
-                    <label 
-                        for="filter__checkbox" 
-                        class="filter__checkbox-label">
-                        Full Time
-                    </label>
+                    <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox" class="filter__checkbox filter__checkbox-desktop">
+                <label for="filter__checkbox" class="filter__checkbox-label">Full Time</label>
                 </span>
                 <!--SEARCH/SUBMIT-->
-                <button 
-                    type="submit"
-                    class="btn search__btn search__btn-desktop">
+                <button class="btn search__btn search__btn-desktop">
                     Search
                 </button>
             </div>
