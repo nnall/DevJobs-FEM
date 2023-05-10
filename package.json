@@ -2,7 +2,7 @@
   "name": "devjobs2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".eleventy.js",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy"
@@ -10,8 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "eleventy-plugin-svg-sprite": "^2.4.0",
+    "sass": "^1.62.1"
+  },
   "dependencies": {
-    "@sindresorhus/slugify": "^2.2.0",
-    "sass": "^1.62.0"
+    "@sindresorhus/slugify": "^2.2.0"
   }
 }

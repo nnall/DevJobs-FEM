@@ -1,13 +1,11 @@
 "use strict"
-
+ 
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
 const dialogContainer = document.querySelector('.dialog-container');
 const dialogOverlay = document.querySelector(".dialog-overlay");
 
 const resultsContainer = document.querySelector('.results__container');
-
-
 
 const loadMoreBtnWrapper = document.querySelector('#btn-wrapper');
 const loadMoreBtn = document.querySelector('.load__more');
@@ -261,102 +259,16 @@ fetch("_data/data.json")
      searchJobs = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
 
         
+        // 
+
+
 
         let title = searchInput;
         let location = locationInput;
         let fulltime = checkboxInput;
-        let testTitle = false;
-        let testLocation = false;
-        let testFullTime = false;
+      
         let displayArray = [];
     
-    
-        // if field is left blank... then provide results for non-blank field matches
-        // if field is NOT blank but has no matches... then do NOT provide matches for the other fields.. indicate there are no matches
-    
-        // ONlY fields that have information should be tested for a match 
-        if(title.value.length > 0){
-            testTitle = true;
-        }
-        if(location.value.length >0) {
-            testLocation = true;
-            
-        }
-        if(fulltime.checked ==true){
-            testFullTime = true;
-        } 
-        
-        // NONE - display all jobs again
-        if(!testTitle && !testLocation && !testFullTime){
-            displayArray = jobs.reverse();
-        }
-    
-        // SINGLES - JUST ONE FIELD
-        else if(!testTitle && !testLocation && testFullTime){
-            displayArray = fullTimeJobs;
-        }
-    
-        else if(!testTitle && testLocation && !testFullTime){
-            jobs.forEach((job)=>{
-                if (job.location.toLowerCase().includes(location.value.toLowerCase())){
-                    displayArray.push(job);  
-                }
-            })
-            displayArray.reverse();
-        }
-    
-        else if(testTitle && !testLocation && !testFullTime){
-            jobs.forEach((job)=>{
-                if (job.position.toLowerCase().includes(title.value.toLowerCase())){
-                    displayArray.push(job); 
-                }
-            })
-            displayArray.reverse();
-        }
-        
-        // DOUBLES - 2 FIELDS
-        // one reusable function for location +FT/ title + FT
-        else if(!testTitle && testLocation && testFullTime){
-            jobs.forEach((job)=>{
-                if(job.location.toLowerCase().includes(location.value.toLowerCase()) && 
-                job.contract =='Full Time'){
-                    displayArray.push(job);
-                }
-            })
-            displayArray.reverse();
-        }
-    
-        else if(testTitle && !testLocation && testFullTime){
-            jobs.forEach((job)=>{
-                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
-                job.contract =='Full Time'){
-                    displayArray.push(job);  
-                }
-            })
-            displayArray.reverse();
-        }
-    
-        else if(testTitle && testLocation && !testFullTime){
-            jobs.forEach((job)=>{
-                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
-                job.location.toLowerCase().includes(location.value.toLowerCase())){
-                    displayArray.push(job); 
-                }
-            })
-            displayArray.reverse();
-        }
-    
-        // TRIPLE - ALL FIELDS
-        else if(testTitle && testLocation && testFullTime){
-            jobs.forEach((job)=>{
-                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
-                job.location.toLowerCase().includes(location.value.toLowerCase()) &&
-                job.contract =='Full Time'){
-                    displayArray.push(job);
-                }
-            })
-            displayArray.reverse();
-        }
     
         addCards(displayArray);
     

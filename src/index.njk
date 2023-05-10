@@ -18,7 +18,7 @@
 
     </main> 
 
-    {# Modal #} 
+    <!-- MODAL --> 
 
     <form 
         class = "dialog-container hide" 
@@ -36,8 +36,9 @@
                  </svg>
 
                 <label>
-                    {# <span class="sr-only">Filter By Location</span> #}
+                    <span class="sr-only">Filter By Location</span>
                     <input
+                        id = "location__modal"
                         type="search"
                         name="location"
                         placeholder = "Filter by location..."
@@ -48,9 +49,24 @@
             </div>
 
             <div class="filter__container-bottom">
-                <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox"  class="filter__checkbox filter__checkbox-dialog">
+                <input 
+                    id="fulltime__modal"
+                    type="checkbox"
+                    name= "fulltime"
+                    aria-checked="false" 
+                    id="filter__checkbox"  
+                    class="filter__checkbox filter__checkbox-dialog"
+                    >
                 <label for="filter__checkbox" class="filter__checkbox-label">Full Time Only</label>
-                <button class="btn search__btn filter__container-searchBtn">Search</button>
+
+
+                <button 
+                    id= "searchBtn__modal"
+                    class="btn search__btn filter__container-searchBtn"
+                    type="submit"
+                    >
+                    Search
+                </button>
             </div>
         </div>
     </form>

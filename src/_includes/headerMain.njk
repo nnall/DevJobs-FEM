@@ -20,13 +20,17 @@
         </div>
 
         <!-------------- MOBILE SEARCHBAR ( 0 - 758px) -------------->
-        <form class="container searchbar__container searchbar__mobile" aria-expanded="false" role="modal">
-            
+        <form 
+            id = "form__mobile"
+            class="container searchbar__container searchbar__mobile"          
+            method= "GET"
+        >
             
             <!--TITLE INPUT-->
             <label class = "mobile_title_label">
-                {# <span class="sr-only">Filter by title</span> #}
+                <span class="sr-only">Filter by title</span>
                 <input 
+                    id = "title__mobile"
                     type="search"  
                     name = "title" 
                     class="search__input search__input-mobile search" 
@@ -38,21 +42,23 @@
             <button
                 type="button"  
                 class="filter__btn"  
+                name="location"
                 aria-controls="dialog-container"
                 aria-expanded= "false"
                 >
-                    {# <span class="sr-only">location and fulltime filters</span> #}
-                    <svg class = "filter__svg">
-                        <use xlink:href="#svg-icon-filter"></use>
-                    </svg>
+                <span class="sr-only">location and fulltime filters</span>
+                <svg class = "filter__svg">
+                    <use xlink:href="#svg-icon-filter"></use>
+                </svg>
             </button>
             
             <!--SEARCH/SUBMIT-->
-            <button 
+            <button
+                id= "searchBtn__mobile" 
                 class="search__btn"
                 type = "submit" 
                 >
-                    {# <span class="sr-only">submit search</span> #}
+                    <span class="sr-only">submit search</span>
                     <svg class = "search__svg">
                         <use xlink:href="#svg-icon-search"></use>
                     </svg>
@@ -60,16 +66,21 @@
         </form>
 
         <!------------- TABLET/DESKTOP SEARCHBAR (759px - 1107px, and on) ------------->
-        <form class="container searchbar__container searchbar__desktop" aria-expanded="false" role="modal">
+        <form 
+            id = "form__desktop"
+            class="container searchbar__container searchbar__desktop" 
+            method = "GET"
+            >
             
             <!--TITLE INPUT-->
             <div class="search__left">
                 <label>
-                    {# <span class="sr-only">Filter by title</span> #}
+                    <span class="sr-only">Filter by title</span>
                     <svg class = "search__svg">
                         <use xlink:href="#svg-icon-search"></use>
                      </svg>
                      <input 
+                        id="title__desktop"
                         type="search"
                         name="title"
                         class="search__input search__input-desktop search" 
@@ -80,11 +91,12 @@
             <!--LOCATION INPUT-->
             <div class="search__middle">
                 <label>
-                    {# <span class="sr-only">Filter by title</span> #}
+                    <span class="sr-only">Filter by title</span>
                     <svg class = "location__svg">
                         <use xlink:href="#svg-icon-location"></use>
                      </svg>
-                    <input 
+                    <input
+                        id = "location__desktop" 
                         type="search"
                         name="location" 
                         placeholder = "Filter by location..." 
@@ -96,11 +108,26 @@
             <div class="search__right">
                 <!--FULLTIME INPUT-->
                 <span class="FT__container">
-                    <input type="checkbox" fulltime-checkbox aria-checked="false" id="filter__checkbox" class="filter__checkbox filter__checkbox-desktop">
-                <label for="filter__checkbox" class="filter__checkbox-label">Full Time</label>
+                    <input 
+                        id="fulltime__desktop"
+                        name="fulltime"
+                        type="checkbox" 
+                        aria-checked="false" 
+                        id="filter__checkbox" 
+                        class="filter__checkbox filter__checkbox-desktop"
+                    >
+                    <label 
+                        for="filter__checkbox" 
+                        class="filter__checkbox-label">
+                        Full Time
+                    </label>
                 </span>
                 <!--SEARCH/SUBMIT-->
-                <button class="btn search__btn search__btn-desktop">
+                <button 
+                    id= "searchBtn__desktop"
+                    class="btn search__btn search__btn-desktop"
+                    type="submit"
+                >
                     Search
                 </button>
             </div>
