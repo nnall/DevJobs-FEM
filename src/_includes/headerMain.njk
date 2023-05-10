@@ -29,8 +29,10 @@
             <!--TITLE INPUT-->
             <label class = "mobile_title_label">
                 <span class="sr-only">Filter by title</span>
-                <input 
+                <input
+
                     id = "title__mobile"
+                    data-search
                     type="search"  
                     name = "title" 
                     class="search__input search__input-mobile search" 
@@ -42,7 +44,6 @@
             <button
                 type="button"  
                 class="filter__btn"  
-                name="location"
                 aria-controls="dialog-container"
                 aria-expanded= "false"
                 >
@@ -81,6 +82,7 @@
                      </svg>
                      <input 
                         id="title__desktop"
+                        data-search
                         type="search"
                         name="title"
                         class="search__input search__input-desktop search" 
@@ -96,7 +98,8 @@
                         <use xlink:href="#svg-icon-location"></use>
                      </svg>
                     <input
-                        id = "location__desktop" 
+                        id = "location__desktop"
+                        location-search 
                         type="search"
                         name="location" 
                         placeholder = "Filter by location..." 
@@ -110,6 +113,7 @@
                 <span class="FT__container">
                     <input 
                         id="fulltime__desktop"
+                        fulltime-checkbox
                         name="fulltime"
                         type="checkbox" 
                         aria-checked="false" 

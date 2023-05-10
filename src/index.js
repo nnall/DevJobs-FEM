@@ -18,6 +18,10 @@ const checkboxInput = document.querySelector('[fulltime-checkbox]');
 // ALL SEARCH BUTTONS
 const searchBtns = document.querySelectorAll('.search__btn');
 
+// ALL FORMS
+const forms = document.querySelectorAll('form');
+
+
 // BOTH 'FILTER BY TITLE' INPUTS
 const searchMobile = document.querySelector('.search__input-mobile');
 const searchDesktop = document.querySelector('.search__input-desktop')
@@ -256,18 +260,20 @@ fetch("_data/data.json")
      addCards(jobs) // function to display all jobs initially upon page load 
     })
 .then(()=>{
-     searchJobs = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
-
-        
-        // 
-
-
-
+     searchJobs = function(event){ //'jobs' argument will be the fetched jobs array from initial page load only
+         
         let title = searchInput;
         let location = locationInput;
         let fulltime = checkboxInput;
-      
+
+        // apply a filter to 'jobs'
+
+        console.log(`title:${title.value}, location:${location.value}, fulltime: ${fulltime.checked} `)
+
+        // matchhing jobs go in here
         let displayArray = [];
+
+        // displayArray.push(jobs.find(job))
     
     
         addCards(displayArray);
@@ -275,19 +281,12 @@ fetch("_data/data.json")
     }
 })
 .then(()=>{
-    searchBtns.forEach((btn)=>{
-        btn.addEventListener('click', ()=>{
-            searchJobs();  
+    forms.forEach((form)=>{
+        form.addEventListener('submit', (e)=>{
+            // e.preventDefault();
+            // searchJobs(e);  
             dialogContainer.classList.add('hide');
         })
      
     })
-})
-.then(()=>{
-    document.addEventListener('keyup', (e)=>{
-        if(e.key === 'Enter'){
-           searchJobs(); 
-           dialogContainer.classList.add('hide');
-        } 
-   })
 })
