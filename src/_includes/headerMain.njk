@@ -64,6 +64,61 @@
                         <use xlink:href="#svg-icon-search"></use>
                     </svg>
             </button>
+
+
+            <!---------------- MODAL -------------->
+            <div 
+                class = "dialog-container hide" 
+                role = "dialog"
+                aria-modal = "true"  
+                id="dialog-container"
+                >
+
+                <div class = "dialog-overlay"></div>  
+
+                <div class="filter__container" role="document">
+                    <div class="filter__container-top">
+                        <svg class = "location__svg">
+                            <use xlink:href="#svg-icon-location"></use>
+                        </svg>
+
+                        <label>
+                            <span class="sr-only">Filter By Location</span>
+                            <input
+                                id = "location__modal"
+                                location-search
+                                type="search"
+                                name="location"
+                                placeholder = "Filter by location..."
+                                class="filter__search filter__search-dialog search"
+                                >
+                        </label>
+
+                    </div>
+
+                    <div class="filter__container-bottom">
+                        <input 
+                            id="fulltime__modal"
+                            fulltime-checkbox
+                            type="checkbox"
+                            name= "fulltime"
+                            aria-checked="false" 
+                            id="filter__checkbox"  
+                            class="filter__checkbox filter__checkbox-dialog"
+                            >
+                        <label for="filter__checkbox" class="filter__checkbox-label">Full Time Only</label>
+
+
+                        <button 
+                            id= "searchBtn__modal"
+                            class="btn search__btn filter__container-searchBtn"
+                            type="submit"
+                            >
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
         </form>
 
         <!------------- TABLET/DESKTOP SEARCHBAR (759px - 1107px, and on) ------------->

@@ -215,7 +215,7 @@ input[type="checkbox"].toggle__input:checked + .check:before{
 
 // ...................................SEARCHBAR....................................//
 
-
+// FORM
 .searchbar__container{
     position:absolute;
     background-color: var(--component-bg-color);
@@ -224,6 +224,8 @@ input[type="checkbox"].toggle__input:checked + .check:before{
     border-radius:5px;
     padding:.75rem;
     align-items:center;
+    // overflow:visible;
+    border: .5px solid blue;
 }
 
 .searchbar__mobile{
@@ -340,34 +342,36 @@ label{
 
 }
 
-// ...................FILTER CONTAINER (POPUP - MOBILE) ..................//
+// ...................FILTER CONTAINER (POPUP MODAL) ..................//
 
-// ...........a11ydialog Modal settings .........//
 
 // entire screen container for the modal (display:none)
-.dialog-container[aria-hidden="true"]{
-    display:none;
+
+.dialog-container{
+     /* to be above the <header> (z-index:200)*/
+     border:2px solid pink;
+    position:absolute;
+    // z-index:400;
+    // width:100%;
+    // height:100%;
+    // top: 0; /* 1 */
+    // right: 0; /* 1 */
+    // bottom: 0; /* 1 */
+    left: 0; /* 1 */
 }
+
 
 .dialog-overlay{
+    // z-index: 200;
     background-color: rgb(43 46 56 / 0.7); /* 1 */
     animation: fade-in 200ms both;
-}
-
-.dialog-container, .dialog-overlay{
-    z-index:100; /* to be above the <header> (z-index:200)*/
-    position:fixed;
-    top: 0; /* 1 */
-    right: 0; /* 1 */
-    bottom: 0; /* 1 */
-    left: 0; /* 1 */
 }
 
 
 // modal popup container
 .filter__container{
     padding:.5rem;
-    z-index:200;
+    z-index:400;
     background-color:var(--component-bg-color);
     // border:1px solid blue;
     border-radius:5px;
