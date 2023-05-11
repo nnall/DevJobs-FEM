@@ -28,6 +28,7 @@ $inputFontSize: 1rem;
 
 
 body{
+    position:relative;
     // Light Theme CSS Variables (default)
     --body-bg-color:#{$lightGrey};
     --component-bg-color:#{$white};
@@ -60,6 +61,7 @@ body{
 
 // Dark Theme CSS Variables (default)
 body.dark{
+    position:relative;
     --body-bg-color:#{$midnight};
     --component-bg-color:#{$veryDarkBlue};
     --filter-svg-color: #{$white};
@@ -349,21 +351,23 @@ label{
 
 .dialog-container{
      /* to be above the <header> (z-index:200)*/
-     border:2px solid pink;
+    border:2px solid pink;
     position:absolute;
     // z-index:400;
-    // width:100%;
-    // height:100%;
-    // top: 0; /* 1 */
+    width:100vw;
+    height:100vh;
+    top: 0;; /* 1 */
     // right: 0; /* 1 */
     // bottom: 0; /* 1 */
-    left: 0; /* 1 */
+    left: 0;; /* 1 */
 }
 
 
 .dialog-overlay{
     // z-index: 200;
     background-color: rgb(43 46 56 / 0.7); /* 1 */
+    width:100%;
+    height:100%;
     animation: fade-in 200ms both;
 }
 
