@@ -3,6 +3,7 @@
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
 const dialogContainer = document.querySelector('.dialog-container');
+const dialogOverlay = document.querySelector('.dialog-overlay');
 const resultsContainer = document.querySelector('.results__container');
 
 const loadMoreBtnWrapper = document.querySelector('#btn-wrapper');
@@ -97,6 +98,11 @@ filterBtn.addEventListener('click', function(){
 let logoContainer;
 let cards;
 let searchJobs;
+
+
+dialogOverlay.addEventListener('click', function(){
+    dialogContainer.classList.add('hide');
+})
 
 // Tests for and hides any cards after 12th result and shows 'loadMore' btn
 const displayCards = function(){

@@ -3,10 +3,13 @@ pagination:
     data: data 
     size: 1
     alias: jobPost
-    pagination: "data/{{jobPost.company | slugify }}/"
-    layout: baseJob.njk
+permalink: "data/{{ jobPost.id }}/"
+layout: baseJob.njk
+eleventyComputed:
+    title:  "{{jobPost.company}}" 
 ---
-{% logosSprite %}
+
+{% logosSprite %} 
 
 
 <main>
