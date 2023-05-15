@@ -17,5 +17,6 @@
   },
   "dependencies": {
     "@sindresorhus/slugify": "^2.2.0"
+    
   }
 }

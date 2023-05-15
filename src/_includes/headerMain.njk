@@ -20,7 +20,7 @@
         </div>
 
         <!-------------- MOBILE SEARCHBAR ( 0 - 758px) -------------->
-        <form 
+        <div 
             id = "form__mobile"
             class="container searchbar__container searchbar__mobile"          
             method= "GET"
@@ -106,31 +106,38 @@
                             id="filter__checkbox"  
                             class="filter__checkbox filter__checkbox-dialog"
                             >
-                        <label for="filter__checkbox" class="filter__checkbox-label">Full Time Only</label>
+                        <label 
+                            for="filter__checkbox" 
+                            class="filter__checkbox-label"
+                            fulltime-checkbox
+                            >
+                                Full Time Only
+                            </label>
 
 
                         <button 
                             id= "searchBtn__modal"
                             class="btn search__btn filter__container-searchBtn"
-                            type="submit"
+                            
                             >
                             Search
                         </button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
 
         <!------------- TABLET/DESKTOP SEARCHBAR (759px - 1107px, and on) ------------->
-        <form 
+        <div 
             id = "form__desktop"
             class="container searchbar__container searchbar__desktop" 
             method = "GET"
+            onsubmit
             >
             
             <!--TITLE INPUT-->
             <div class="search__left">
-                <label>
+                <label class = "title__label__desktop">
                     <span class="sr-only">Filter by title</span>
                     <svg class = "search__svg">
                         <use xlink:href="#svg-icon-search"></use>
@@ -147,7 +154,7 @@
 
             <!--LOCATION INPUT-->
             <div class="search__middle">
-                <label>
+                <label class = "filter__label__desktop">
                     <span class="sr-only">Filter by title</span>
                     <svg class = "location__svg">
                         <use xlink:href="#svg-icon-location"></use>
@@ -177,7 +184,9 @@
                     >
                     <label 
                         for="filter__checkbox" 
-                        class="filter__checkbox-label">
+                        class="filter__checkbox-label"
+                        fulltime-checkbox
+                        >
                         Full Time
                     </label>
                 </span>
@@ -185,12 +194,12 @@
                 <button 
                     id= "searchBtn__desktop"
                     class="btn search__btn search__btn-desktop"
-                    type="submit"
+                    
                 >
                     Search
                 </button>
             </div>
              
-        </form>
+        </div>
 
     </header>

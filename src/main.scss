@@ -135,12 +135,10 @@ header{
 }
 
 .top__container{
-    // border:.5px solid orange;
     display:flex;
     justify-content: space-between;
     position:relative;
     margin:1.5rem auto 1.75rem auto;
-    z-index:10;
 }
 
 h1{
@@ -219,15 +217,11 @@ input[type="checkbox"].toggle__input:checked + .check:before{
 
 // FORM
 .searchbar__container{
-    position:absolute;
     background-color: var(--component-bg-color);
     left:50%;
-    transform:translatex(-50%);
     border-radius:5px;
     padding:.75rem;
     align-items:center;
-    // overflow:visible;
-    border: .5px solid blue;
 }
 
 .searchbar__mobile{
@@ -261,6 +255,23 @@ input[type="checkbox"].toggle__input:checked + .check:before{
 label{
     display:flex;
     align-items:center;
+}
+
+.sr-only {
+    position: absolute;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.title__label__desktop, .filter__label__desktop{
+    width:100%;
 }
 
 
@@ -350,16 +361,11 @@ label{
 // entire screen container for the modal (display:none)
 
 .dialog-container{
-     /* to be above the <header> (z-index:200)*/
-    border:2px solid pink;
     position:absolute;
-    // z-index:400;
     width:100vw;
     height:100vh;
-    top: 0;; /* 1 */
-    // right: 0; /* 1 */
-    // bottom: 0; /* 1 */
-    left: 0;; /* 1 */
+    top:0;
+    left:0;
 }
 
 
@@ -375,7 +381,7 @@ label{
 // modal popup container
 .filter__container{
     padding:.5rem;
-    z-index:400;
+    // z-index:400;
     background-color:var(--component-bg-color);
     // border:1px solid blue;
     border-radius:5px;
@@ -383,7 +389,7 @@ label{
     min-width:337px;
     max-width:339px;
 
-    position:relative;
+    position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%, -50%);    
@@ -418,7 +424,7 @@ label{
 
 .filter__search{
     padding-left:0;
-    // font-size:1.2rem;
+    width:100%;
 }
 
 .filter__search, .filter__checkbox-label{

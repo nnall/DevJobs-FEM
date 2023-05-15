@@ -1,12 +1,14 @@
 ---
 pagination:
-    data: data
+    data: data 
     size: 1
     alias: jobPost
-permalink: "data/{{jobPost.id}}/"
-layout: baseJob.njk
+    pagination: "data/{{jobPost.company | slugify }}/"
+    layout: baseJob.njk
 ---
 {% logosSprite %}
+
+
 <main>
     <div class="jobPost__container">
         <div class="upperBox">

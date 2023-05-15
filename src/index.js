@@ -1,10 +1,8 @@
 "use strict"
- 
+
 const searchBarContainer = document.querySelector('.searchbar__container');
 const filterBtn = document.querySelector('.filter__btn');
 const dialogContainer = document.querySelector('.dialog-container');
-const dialogOverlay = document.querySelector(".dialog-overlay");
-
 const resultsContainer = document.querySelector('.results__container');
 
 const loadMoreBtnWrapper = document.querySelector('#btn-wrapper');
@@ -17,10 +15,6 @@ const checkboxInput = document.querySelector('[fulltime-checkbox]');
 
 // ALL SEARCH BUTTONS
 const searchBtns = document.querySelectorAll('.search__btn');
-
-// ALL FORMS
-const forms = document.querySelectorAll('form');
-
 
 // BOTH 'FILTER BY TITLE' INPUTS
 const searchMobile = document.querySelector('.search__input-mobile');
@@ -60,9 +54,11 @@ locationDesktop.addEventListener('input', function(){
 checkboxDiag.addEventListener('change', function(){
     checkboxDesk.checked = checkboxDiag.checked;
 })
-checkboxDiag.addEventListener('change', function(){
+checkboxDesk.addEventListener('change', function(){
     checkboxDiag.checked = checkboxDesk.checked;
 })
+
+console.log(checkboxInput.checked);
 
 
 //////////////   IMPORTS  ///////////////////////     
@@ -94,20 +90,6 @@ filterBtn.addEventListener('click', function(){
     dialogContainer.classList.remove('hide');
     console.log('filterBtn was clicked')
 })
-
-
-//////// click out of Modal
-
-dialogOverlay.addEventListener('click',()=>{
-    dialogContainer.classList.add('hide');
-})
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////////
 
 ////// FILTERING 'jobs' ARRAY FROM SEARCH, PUTTING INTO 'displayArray' FOR addCards() ///////
@@ -140,7 +122,7 @@ const displayCards = function(){
             }
         }
     }
-    /////////////////
+
 
 }
 
@@ -260,33 +242,131 @@ fetch("_data/data.json")
      addCards(jobs) // function to display all jobs initially upon page load 
     })
 .then(()=>{
-     searchJobs = function(event){ //'jobs' argument will be the fetched jobs array from initial page load only
-         
+    jobs.forEach(job =>{
+        if(job.contract === "Full Time"){
+            fullTimeJobs.push(job);
+        } 
+    })
+})
+.then(()=>{
+     searchJobs = function(){ //'jobs' argument will be the fetched jobs array from initial page load only
+        
         let title = searchInput;
         let location = locationInput;
         let fulltime = checkboxInput;
-
-        // apply a filter to 'jobs'
-
-        console.log(`title:${title.value}, location:${location.value}, fulltime: ${fulltime.checked} `)
-
-        // matchhing jobs go in here
+        let testTitle = false;
+        let testLocation = false;
+        let testFullTime = false;
         let displayArray = [];
 
-        // displayArray.push(jobs.find(job))
+
     
     
+        // if field is left blank... then provide results for non-blank field matches
+        // if field is NOT blank but has no matches... then do NOT provide matches for the other fields.. indicate there are no matches
+    
+        // ONlY fields that have information should be tested for a match 
+        if(title.value.length > 0){
+            testTitle = true;
+        }
+        if(location.value.length >0) {
+            testLocation = true;
+            
+        }
+        if(fulltime.checked == true){
+            testFullTime = true;
+        } 
+        
+        // NONE - display all jobs again
+        if(!testTitle && !testLocation && !testFullTime){
+            displayArray = jobs.reverse();
+        }
+    
+        // SINGLES - JUST ONE FIELD
+        else if(!testTitle && !testLocation && testFullTime){
+            displayArray = fullTimeJobs.reverse();
+        }
+    
+        else if(!testTitle && testLocation && !testFullTime){
+            jobs.forEach((job)=>{
+                if (job.location.toLowerCase().includes(location.value.toLowerCase())){
+                    displayArray.push(job);  
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        else if(testTitle && !testLocation && !testFullTime){
+            jobs.forEach((job)=>{
+                if (job.position.toLowerCase().includes(title.value.toLowerCase())){
+                    displayArray.push(job); 
+                }
+            })
+            displayArray.reverse();
+        }
+        
+        // DOUBLES - 2 FIELDS
+        // one reusable function for location +FT/ title + FT
+        else if(!testTitle && testLocation && testFullTime){
+            jobs.forEach((job)=>{
+                if(job.location.toLowerCase().includes(location.value.toLowerCase()) && 
+                job.contract =='Full Time'){
+                    displayArray.push(job);
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        else if(testTitle && !testLocation && testFullTime){
+            jobs.forEach((job)=>{
+                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
+                job.contract =='Full Time'){
+                    displayArray.push(job);  
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        else if(testTitle && testLocation && !testFullTime){
+            jobs.forEach((job)=>{
+                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
+                job.location.toLowerCase().includes(location.value.toLowerCase())){
+                    displayArray.push(job); 
+                }
+            })
+            displayArray.reverse();
+        }
+    
+        // TRIPLE - ALL FIELDS
+        else if(testTitle && testLocation && testFullTime){
+            jobs.forEach((job)=>{
+                if(job.position.toLowerCase().includes(title.value.toLowerCase()) && 
+                job.location.toLowerCase().includes(location.value.toLowerCase()) &&
+                job.contract =='Full Time'){
+                    displayArray.push(job);
+                }
+            })
+            displayArray.reverse();
+        }
+     
         addCards(displayArray);
     
     }
 })
 .then(()=>{
-    forms.forEach((form)=>{
-        form.addEventListener('submit', (e)=>{
-            // e.preventDefault();
-            // searchJobs(e);  
+    searchBtns.forEach((btn)=>{
+        btn.addEventListener('click', ()=>{
+            searchJobs();  
             dialogContainer.classList.add('hide');
         })
      
     })
+})
+.then(()=>{
+    document.addEventListener('keyup', (e)=>{
+        if(e.key === 'Enter'){
+           searchJobs(); 
+           dialogContainer.classList.add('hide');
+        } 
+   })
 })
